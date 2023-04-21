@@ -26,3 +26,6 @@ C:\Users\PC0\source\repos\ChineseChessGame\obj\Debug\net6.0\ChineseChessGame.gen
 C:\Users\PC0\source\repos\ChineseChessGame\obj\Debug\net6.0\ref\ChineseChessGame.dll
 C:\Users\PC0\source\repos\ChineseChessGame\bin\Debug\net6.0\Content\textures\background.xnb
 C:\Users\PC0\source\repos\ChineseChessGame\bin\Debug\net6.0\Content\sprites\player.xnb
+C:\Users\PC0\source\repos\ChineseChessGame\bin\Debug\net6.0\Content\textures\border.xnb
+C:\Users\PC0\source\repos\ChineseChessGame\bin\Debug\net6.0\Content\audio\bgm.ogg
+C:\Users\PC0\source\repos\ChineseChessGame\bin\Debug\net6.0\Content\audio\bgm.xnb

@@ -1,4 +1,6 @@
 Source File,Dest File,Processor Type,Content Type,Source File Size,Dest File Size,Build Seconds
-"C:/Users/PC0/source/repos/ChineseChessGame/Content/fonts/textFont.spritefont","C:/Users/PC0/source/repos/ChineseChessGame/Content/bin/DesktopGL/fonts/textFont.xnb","FontDescriptionProcessor","SpriteFontContent",2076,37919,0.2131631
-"C:/Users/PC0/source/repos/ChineseChessGame/Content/sprites/player.png","C:/Users/PC0/source/repos/ChineseChessGame/Content/bin/DesktopGL/sprites/player.xnb","TextureProcessor","Texture2DContent",325,40085,0.1656253
-"C:/Users/PC0/source/repos/ChineseChessGame/Content/textures/background.jpg","C:/Users/PC0/source/repos/ChineseChessGame/Content/bin/DesktopGL/textures/background.xnb","TextureProcessor","Texture2DContent",67853,3200085,0.2177737
+"C:/Users/PC0/source/repos/ChineseChessGame/Content/audio/bgm.mp3","C:/Users/PC0/source/repos/ChineseChessGame/Content/bin/DesktopGL/audio/bgm.xnb","SongProcessor","SongContent",881195,121,1.4628232
+"C:/Users/PC0/source/repos/ChineseChessGame/Content/fonts/textFont.spritefont","C:/Users/PC0/source/repos/ChineseChessGame/Content/bin/DesktopGL/fonts/textFont.xnb","FontDescriptionProcessor","SpriteFontContent",2076,37919,0.1262418
+"C:/Users/PC0/source/repos/ChineseChessGame/Content/sprites/player.png","C:/Users/PC0/source/repos/ChineseChessGame/Content/bin/DesktopGL/sprites/player.xnb","TextureProcessor","Texture2DContent",325,40085,0.0140731
+"C:/Users/PC0/source/repos/ChineseChessGame/Content/textures/background.jpg","C:/Users/PC0/source/repos/ChineseChessGame/Content/bin/DesktopGL/textures/background.xnb","TextureProcessor","Texture2DContent",67853,3200085,0.097834
+"C:/Users/PC0/source/repos/ChineseChessGame/Content/textures/border.png","C:/Users/PC0/source/repos/ChineseChessGame/Content/bin/DesktopGL/textures/border.xnb","TextureProcessor","Texture2DContent",220,10901,0.003151

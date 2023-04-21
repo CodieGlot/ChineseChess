@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-  <SourceFile>C:/Users/PC0/source/repos/ChineseChessGame/Content/sprites/player.png</SourceFile>
-  <SourceTime>2023-04-21T14:46:24.1828365+07:00</SourceTime>
-  <DestFile>C:/Users/PC0/source/repos/ChineseChessGame/Content/bin/DesktopGL/sprites/player.xnb</DestFile>
-  <DestTime>2023-04-21T20:04:46.9854725+07:00</DestTime>
+  <SourceFile>C:/Users/PC0/source/repos/ChineseChessGame/Content/textures/border.png</SourceFile>
+  <SourceTime>2023-04-21T18:52:36.584916+07:00</SourceTime>
+  <DestFile>C:/Users/PC0/source/repos/ChineseChessGame/Content/bin/DesktopGL/Content/textures/border.xnb</DestFile>
+  <DestTime>2023-04-21T19:03:45.3582735+07:00</DestTime>
   <Importer>TextureImporter</Importer>
   <ImporterTime>2022-07-26T18:44:56+07:00</ImporterTime>
   <Processor>TextureProcessor</Processor>

@@ -4,11 +4,15 @@
   <Platform>DesktopGL</Platform>
   <Config />
   <SourceFiles>
+    <File>C:/Users/PC0/source/repos/ChineseChessGame/Content/audio/bgm.mp3</File>
     <File>C:/Users/PC0/source/repos/ChineseChessGame/Content/fonts/textFont.spritefont</File>
     <File>C:/Users/PC0/source/repos/ChineseChessGame/Content/sprites/player.png</File>
     <File>C:/Users/PC0/source/repos/ChineseChessGame/Content/textures/background.jpg</File>
+    <File>C:/Users/PC0/source/repos/ChineseChessGame/Content/textures/border.png</File>
   </SourceFiles>
   <DestFiles>
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />
