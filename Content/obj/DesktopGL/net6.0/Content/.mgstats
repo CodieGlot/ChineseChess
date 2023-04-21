@@ -1,0 +1,4 @@
+Source File,Dest File,Processor Type,Content Type,Source File Size,Dest File Size,Build Seconds
+"C:/Users/PC0/source/repos/ChineseChessGame/Content/fonts/textFont.spritefont","C:/Users/PC0/source/repos/ChineseChessGame/Content/bin/DesktopGL/Content/fonts/textFont.xnb","FontDescriptionProcessor","SpriteFontContent",2076,37919,0.2673734
+"C:/Users/PC0/source/repos/ChineseChessGame/Content/sprites/player.png","C:/Users/PC0/source/repos/ChineseChessGame/Content/bin/DesktopGL/Content/sprites/player.xnb","TextureProcessor","Texture2DContent",325,40085,0.1163834
+"C:/Users/PC0/source/repos/ChineseChessGame/Content/textures/background.jpg","C:/Users/PC0/source/repos/ChineseChessGame/Content/bin/DesktopGL/Content/textures/background.xnb","TextureProcessor","Texture2DContent",67853,3200085,0.2103233
