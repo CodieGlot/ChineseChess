@@ -30,6 +30,7 @@ namespace ChineseChessGame
         private Vector2 bannerPos;
 
         private Piece[,] board;
+        public Team turn = Team.RED;
 
         public ChineseChess()
         {
@@ -127,39 +128,39 @@ namespace ChineseChessGame
 
             // CHANGE TO CHILD CLASSES WHEN DONE
 
-            board[0, 0] = new Piece(Content.Load<Texture2D>("pieces/chariot-black"), border, getPieceCoords(0,0));
-            board[0, 1] = new Piece(Content.Load<Texture2D>("pieces/horse-black"), border, getPieceCoords(1, 0));
-            board[0, 2] = new Piece(Content.Load<Texture2D>("pieces/elephant-black"), border, getPieceCoords(2, 0));
-            board[0, 3] = new Piece(Content.Load<Texture2D>("pieces/advisor-black"), border, getPieceCoords(3, 0));
-            board[0, 4] = new Piece(Content.Load<Texture2D>("pieces/general-black"), border, getPieceCoords(4, 0));
-            board[0, 5] = new Piece(Content.Load<Texture2D>("pieces/advisor-black"), border, getPieceCoords(5, 0));
-            board[0, 6] = new Piece(Content.Load<Texture2D>("pieces/elephant-black"), border, getPieceCoords(6, 0));
-            board[0, 7] = new Piece(Content.Load<Texture2D>("pieces/horse-black"), border, getPieceCoords(7, 0));
-            board[0, 8] = new Piece(Content.Load<Texture2D>("pieces/chariot-black"), border, getPieceCoords(8, 0));
-            board[2, 1] = new Piece(Content.Load<Texture2D>("pieces/cannon-black"), border, getPieceCoords(1, 2));
-            board[2, 7] = new Piece(Content.Load<Texture2D>("pieces/cannon-black"), border, getPieceCoords(7, 2));
-            board[3, 0] = new Piece(Content.Load<Texture2D>("pieces/soldier-black"), border, getPieceCoords(0, 3));
-            board[3, 2] = new Piece(Content.Load<Texture2D>("pieces/soldier-black"), border, getPieceCoords(2, 3));
-            board[3, 4] = new Piece(Content.Load<Texture2D>("pieces/soldier-black"), border, getPieceCoords(4, 3));
-            board[3, 6] = new Piece(Content.Load<Texture2D>("pieces/soldier-black"), border, getPieceCoords(6, 3));
-            board[3, 8] = new Piece(Content.Load<Texture2D>("pieces/soldier-black"), border, getPieceCoords(8, 3));
+            board[0, 0] = new Piece(Content.Load<Texture2D>("pieces/chariot-black"), border, 0, 0, Team.BLACK);
+            board[0, 1] = new Piece(Content.Load<Texture2D>("pieces/horse-black"), border, 1, 0, Team.BLACK);
+            board[0, 2] = new Piece(Content.Load<Texture2D>("pieces/elephant-black"), border, 2, 0, Team.BLACK);
+            board[0, 3] = new Piece(Content.Load<Texture2D>("pieces/advisor-black"), border, 3, 0, Team.BLACK);
+            board[0, 4] = new Piece(Content.Load<Texture2D>("pieces/general-black"), border, 4, 0, Team.BLACK);
+            board[0, 5] = new Piece(Content.Load<Texture2D>("pieces/advisor-black"), border, 5, 0, Team.BLACK);
+            board[0, 6] = new Piece(Content.Load<Texture2D>("pieces/elephant-black"), border, 6, 0, Team.BLACK);
+            board[0, 7] = new Piece(Content.Load<Texture2D>("pieces/horse-black"), border, 7, 0, Team.BLACK);
+            board[0, 8] = new Piece(Content.Load<Texture2D>("pieces/chariot-black"), border, 8, 0, Team.BLACK);
+            board[2, 1] = new Piece(Content.Load<Texture2D>("pieces/cannon-black"), border, 1, 2, Team.BLACK);
+            board[2, 7] = new Piece(Content.Load<Texture2D>("pieces/cannon-black"), border, 7, 2, Team.BLACK);
+            board[3, 0] = new Soldier(Content.Load<Texture2D>("pieces/soldier-black"), border, 0, 3, Team.BLACK);
+            board[3, 2] = new Soldier(Content.Load<Texture2D>("pieces/soldier-black"), border, 2, 3, Team.BLACK);
+            board[3, 4] = new Soldier(Content.Load<Texture2D>("pieces/soldier-black"), border, 4, 3, Team.BLACK);
+            board[3, 6] = new Soldier(Content.Load<Texture2D>("pieces/soldier-black"), border, 6, 3, Team.BLACK);
+            board[3, 8] = new Soldier(Content.Load<Texture2D>("pieces/soldier-black"), border, 8, 3, Team.BLACK);
 
-            board[9, 0] = new Piece(Content.Load<Texture2D>("pieces/chariot-red"), border, getPieceCoords(0, 9));
-            board[9, 1] = new Piece(Content.Load<Texture2D>("pieces/horse-red"), border, getPieceCoords(1, 9));
-            board[9, 2] = new Piece(Content.Load<Texture2D>("pieces/elephant-red"), border, getPieceCoords(2, 9));
-            board[9, 3] = new Piece(Content.Load<Texture2D>("pieces/advisor-red"), border, getPieceCoords(3, 9));
-            board[9, 4] = new Piece(Content.Load<Texture2D>("pieces/general-red"), border, getPieceCoords(4, 9));
-            board[9, 5] = new Piece(Content.Load<Texture2D>("pieces/advisor-red"), border, getPieceCoords(5, 9));
-            board[9, 6] = new Piece(Content.Load<Texture2D>("pieces/elephant-red"), border, getPieceCoords(6, 9));
-            board[9, 7] = new Piece(Content.Load<Texture2D>("pieces/horse-red"), border, getPieceCoords(7, 9));
-            board[9, 8] = new Piece(Content.Load<Texture2D>("pieces/chariot-red"), border, getPieceCoords(8, 9));
-            board[7, 1] = new Piece(Content.Load<Texture2D>("pieces/cannon-red"), border, getPieceCoords(1, 7));
-            board[7, 7] = new Piece(Content.Load<Texture2D>("pieces/cannon-red"), border, getPieceCoords(7, 7));
-            board[6, 0] = new Piece(Content.Load<Texture2D>("pieces/soldier-red"), border, getPieceCoords(0, 6));
-            board[6, 2] = new Piece(Content.Load<Texture2D>("pieces/soldier-red"), border, getPieceCoords(2, 6));
-            board[6, 4] = new Piece(Content.Load<Texture2D>("pieces/soldier-red"), border, getPieceCoords(4, 6));
-            board[6, 6] = new Piece(Content.Load<Texture2D>("pieces/soldier-red"), border, getPieceCoords(6, 6));
-            board[6, 8] = new Piece(Content.Load<Texture2D>("pieces/soldier-red"), border, getPieceCoords(8, 6));
+            board[9, 0] = new Piece(Content.Load<Texture2D>("pieces/chariot-red"), border, 0, 9, Team.RED);
+            board[9, 1] = new Piece(Content.Load<Texture2D>("pieces/horse-red"), border, 1, 9, Team.RED);
+            board[9, 2] = new Piece(Content.Load<Texture2D>("pieces/elephant-red"), border, 2, 9, Team.RED);
+            board[9, 3] = new Piece(Content.Load<Texture2D>("pieces/advisor-red"), border, 3, 9, Team.RED);
+            board[9, 4] = new Piece(Content.Load<Texture2D>("pieces/general-red"), border, 4, 9, Team.RED);
+            board[9, 5] = new Piece(Content.Load<Texture2D>("pieces/advisor-red"), border, 5, 9, Team.RED);
+            board[9, 6] = new Piece(Content.Load<Texture2D>("pieces/elephant-red"), border, 6, 9, Team.RED);
+            board[9, 7] = new Piece(Content.Load<Texture2D>("pieces/horse-red"), border, 7, 9, Team.RED);
+            board[9, 8] = new Piece(Content.Load<Texture2D>("pieces/chariot-red"), border, 8, 9, Team.RED);
+            board[7, 1] = new Piece(Content.Load<Texture2D>("pieces/cannon-red"), border, 1, 7, Team.RED);
+            board[7, 7] = new Piece(Content.Load<Texture2D>("pieces/cannon-red"), border, 7, 7, Team.RED);
+            board[6, 0] = new Soldier(Content.Load<Texture2D>("pieces/soldier-red"), border, 0, 6, Team.RED);
+            board[6, 2] = new Soldier(Content.Load<Texture2D>("pieces/soldier-red"), border, 2, 6, Team.RED);
+            board[6, 4] = new Soldier(Content.Load<Texture2D>("pieces/soldier-red"), border, 4, 6, Team.RED);
+            board[6, 6] = new Soldier(Content.Load<Texture2D>("pieces/soldier-red"), border, 6, 6, Team.RED);
+            board[6, 8] = new Soldier(Content.Load<Texture2D>("pieces/soldier-red"), border, 8, 6, Team.RED);
         }
 
         private void updateBoard()
@@ -170,20 +171,11 @@ namespace ChineseChessGame
                 {
                     if (board[y, x] is not null)
                     {
-                        board[y, x].Update(mouse);
+                        board[y, x].Update(mouse, turn, board);
                     }
                 }
             }
         }
-
-        private int[] getPieceCoords(int x, int y)
-        {
-            int cordX = BOARD.BoardMarginLeft + BOARD.CellGap * x;
-            int cordY = BOARD.BoardMarginTop + BOARD.CellGap * y;
-
-            return new int[] { cordX, cordY };
-        }
-
         private void drawBoard()
         {
             for (int y = 0; y != 10; y++)

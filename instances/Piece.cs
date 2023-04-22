@@ -15,12 +15,20 @@ namespace ChineseChessGame.instances
         protected Texture2D piece;
         protected Rectangle pieceRect;
 
+        protected Piece[,] board;
+
         protected Texture2D border;
         protected Rectangle borderRect;
 
         protected Boolean hasHighlightBorder = true;
+        protected Boolean isSelected = false;
 
-        public Piece(Texture2D piece, Texture2D border, int[] coords)
+        protected int[,] validMoves;
+
+        protected int X, Y;
+        protected Team team;
+
+        public Piece(Texture2D piece, Texture2D border, int x, int y, Team team)
         {
             this.piece = piece;
             this.pieceRect = new Rectangle(0, 0, BOARD.PieceSize, BOARD.PieceSize);
@@ -28,21 +36,35 @@ namespace ChineseChessGame.instances
             this.border = border;
             this.borderRect = new Rectangle(0, 0, BOARD.BorderSize, BOARD.BorderSize);
 
-            this.pieceRect.X = coords[0] - BOARD.PieceSize / 2;
-            this.pieceRect.Y = coords[1] - BOARD.PieceSize / 2;
+            this.X = x;
+            this.Y = y;
+
+            int[] coords = this.getPieceCoords(x, y);
+            this.pieceRect.X = coords[0];
+            this.pieceRect.Y = coords[1];
+
+            this.team = team;
         }
 
-        public void Update(MouseState mouse)
+        //DELETE THIS AFTER CHILD CLASSES FINISHED
+        public void Update(MouseState mouse, Team turn, Piece[,] board)
         {
-
-            if (this.isMouseOnPiece(mouse)) {
-
+            if (this.team == turn && this.isMouseOnPiece(mouse))
+            {
                 this.hasHighlightBorder = true;
-                this.getBorderCoords();
+                this.assignBorderCoords(this.X, this.Y);
 
                 if (mouse.LeftButton == ButtonState.Pressed)
                 {
-                    // ADD ACTIONS HERE
+                    if (!this.isSelected)
+                    {
+                        this.isSelected = true;
+
+                    }
+                    else
+                    {
+                        this.isSelected = false;
+                    }
                 }
             }
             else
@@ -54,45 +76,67 @@ namespace ChineseChessGame.instances
         {
             if (this.hasHighlightBorder)
             {
-                this.drawPieceBorder(spriteBatch);
+                this.drawPieceBorder(spriteBatch, BOARD.BorderColor);
+            }
+
+            if (this.isSelected)
+            {
+                this.drawValidMoves(spriteBatch, this.validMoves, BOARD.AvailPosColor);
             }
 
             spriteBatch.Draw(piece, pieceRect, Color.White);
         }
-
         protected Boolean isMouseOnPiece(MouseState mouse)
         {
             return (mouse.X >= pieceRect.X && mouse.X < pieceRect.X + BOARD.PieceSize) &&
                 (mouse.Y >= pieceRect.Y && mouse.Y < pieceRect.Y + BOARD.PieceSize);
         }
 
-        protected void getBorderCoords()
+        protected int[] getPieceCoords(int x, int y)
         {
-            this.borderRect.X = this.pieceRect.X - 3;
-            this.borderRect.Y = this.pieceRect.Y - 3;
+            int cordX = BOARD.BoardMarginLeft + BOARD.CellGap * x - BOARD.PieceSize / 2;
+            int cordY = BOARD.BoardMarginTop + BOARD.CellGap * y - BOARD.PieceSize / 2;
+
+            return new int[] { cordX, cordY };
+        }
+        protected void assignBorderCoords(int x, int y)
+        {
+            int[] coords = this.getPieceCoords(x, y);
+
+            this.borderRect.X = coords[0] - 5;
+            this.borderRect.Y = coords[1] - 5;
         }
 
-        protected void drawPieceBorder(SpriteBatch sb)
+        protected void drawPieceBorder(SpriteBatch sb, Color color)
         {
             int x, y;
 
             x = this.borderRect.X; y = this.borderRect.Y;
-            this.drawLine(sb, new Vector2(x, y), new Vector2(x + BOARD.FrameSize, y));
-            this.drawLine(sb, new Vector2(x, y), new Vector2(x, y + BOARD.FrameSize));
+            this.drawLine(sb, new Vector2(x, y), new Vector2(x + BOARD.FrameSize, y), color);
+            this.drawLine(sb, new Vector2(x, y), new Vector2(x, y + BOARD.FrameSize), color);
 
             x = this.borderRect.X; y = this.borderRect.Y + BOARD.BorderSize;
-            this.drawLine(sb, new Vector2(x, y), new Vector2(x + BOARD.FrameSize, y));
-            this.drawLine(sb, new Vector2(x, y), new Vector2(x, y - BOARD.FrameSize));
+            this.drawLine(sb, new Vector2(x, y), new Vector2(x + BOARD.FrameSize, y), color);
+            this.drawLine(sb, new Vector2(x, y), new Vector2(x, y - BOARD.FrameSize), color);
 
             x = this.borderRect.X + BOARD.BorderSize; y = this.borderRect.Y;
-            this.drawLine(sb, new Vector2(x, y), new Vector2(x - BOARD.FrameSize, y));
-            this.drawLine(sb, new Vector2(x, y), new Vector2(x, y + BOARD.FrameSize));
+            this.drawLine(sb, new Vector2(x, y), new Vector2(x - BOARD.FrameSize, y), color);
+            this.drawLine(sb, new Vector2(x, y), new Vector2(x, y + BOARD.FrameSize), color);
 
             x = this.borderRect.X + BOARD.BorderSize; y = this.borderRect.Y + BOARD.BorderSize;
-            this.drawLine(sb, new Vector2(x, y), new Vector2(x - BOARD.FrameSize, y));
-            this.drawLine(sb, new Vector2(x, y), new Vector2(x, y - BOARD.FrameSize));
+            this.drawLine(sb, new Vector2(x, y), new Vector2(x - BOARD.FrameSize, y), color);
+            this.drawLine(sb, new Vector2(x, y), new Vector2(x, y - BOARD.FrameSize), color);
         }
-        protected void drawLine(SpriteBatch sb, Vector2 start, Vector2 end)
+
+        protected void drawValidMoves(SpriteBatch sb, int[,] validMoves, Color color)
+        {
+            for (int i = 0; i != validMoves.Length; i++)
+            {
+                //int[] move = validMoves[i];
+
+            }
+        }
+        protected void drawLine(SpriteBatch sb, Vector2 start, Vector2 end, Color color)
         {
             Vector2 edge = end - start;
 
@@ -106,7 +150,7 @@ namespace ChineseChessGame.instances
                     (int)edge.Length(),
                     3),
                 null,
-                BOARD.BorderColor,
+                color,
                 angle,
                 new Vector2(0, 0),
                 SpriteEffects.None,
