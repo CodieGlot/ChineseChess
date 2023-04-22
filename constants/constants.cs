@@ -9,7 +9,7 @@ using Microsoft.Xna.Framework;
 namespace ChineseChessGame.constants
 {
 
-    internal static class window_constants
+    internal static class WINDOW
     {
         public static string title = "Chinese Chess Game";
 
@@ -18,16 +18,17 @@ namespace ChineseChessGame.constants
 
         public static string banner = "Chinese Chess Game UwU";
     }
-    internal static class board_constants
+    internal static class BOARD
     {
         public static int BoardMarginLeft = 550, BoardMarginTop = 100;
 
         public static int PieceSize = 60;
-        public static int PiecesGap = 80;
 
-        public static int BoardWidth = PiecesGap * 8, BoardHeight = PiecesGap * 9;
+        public static int CellGap = 80;
 
-        public static int BorderSize = 64;
+        public static int BoardWidth = CellGap * 8, BoardHeight = CellGap * 9;
+
+        public static int BorderSize = 66, FrameSize = 20;
         public static Color BorderColor = Color.Green;
     }
 }
