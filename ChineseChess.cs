@@ -30,7 +30,8 @@ namespace ChineseChessGame
         private Vector2 bannerPos;
 
         private Piece[,] board;
-        public Team turn = Team.RED;
+        private Team turn = Team.RED;
+
 
         public ChineseChess()
         {

@@ -29,7 +29,7 @@ namespace ChineseChessGame.constants
         public static int BoardWidth = CellGap * 8, BoardHeight = CellGap * 9;
 
         public static int BorderSize = 66, FrameSize = 20;
-        public static Color BorderColor = Color.LightYellow, AvailPosColor = Color.Green;
+        public static Color BorderColor = Color.LightYellow, AvailPosColor = Color.Green, SelectedColor = Color.Red;
     }
 
     public enum Team {

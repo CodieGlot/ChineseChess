@@ -12,38 +12,56 @@ namespace ChineseChessGame.instances
 {
     internal class Soldier : Piece
     {
-        public Soldier(Texture2D piece, Texture2D border, int x, int y, Team team) : base(piece, border, x, y, team)
+        public Soldier(Texture2D piece, Texture2D border, int x, int y, Team team)
+           : base(piece, border, x, y, team)
         { }
 
-        public new void Update(MouseState mouse, Team turn)
+        protected override void assignValidMoves(Piece[,] board)
         {
-            if (this.team == turn && this.isMouseOnPiece(mouse))
+            if (this.team == Team.BLACK)
             {
-                this.hasHighlightBorder = true;
-                this.assignBorderCoords(this.X, this.Y);
-
-                if (mouse.LeftButton == ButtonState.Pressed)
+                if (this.Y < 5)
                 {
-                    if (!this.isSelected)
+                    this.validMoves = new int[,] { { X, Y + 1 } };
+                }
+                else
+                {
+                    if (this.X == 0)
                     {
-                        this.isSelected = true;
-                        
+                        this.validMoves = new int[,] { { X, Y + 1 }, { X + 1, Y } };
+                    }
+                    else if (this.X == 8)
+                    {
+                        this.validMoves = new int[,] { { X, Y + 1 }, { X - 1, Y } };
                     }
                     else
                     {
-                        this.isSelected = false;
+                        this.validMoves = new int[,] { { X, Y + 1 }, { X + 1, Y }, { X - 1, Y } };
                     }
                 }
             }
             else
             {
-                this.hasHighlightBorder = false;
+                if (this.Y > 5)
+                {
+                    this.validMoves = new int[,] { { X, Y - 1 } };
+                }
+                else
+                {
+                    if (this.X == 0)
+                    {
+                        this.validMoves = new int[,] { { X, Y - 1 }, { X + 1, Y } };
+                    }
+                    else if (this.X == 8)
+                    {
+                        this.validMoves = new int[,] { { X, Y - 1 }, { X - 1, Y } };
+                    }
+                    else
+                    {
+                        this.validMoves = new int[,] { { X, Y - 1 }, { X + 1, Y }, { X - 1, Y } };
+                    }
+                }
             }
-        }
-
-        private void assignValidMoves()
-        {
-
         }
     }
 }
