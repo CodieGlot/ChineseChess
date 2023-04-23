@@ -148,7 +148,7 @@ namespace ChineseChessGame.instances
 
         protected Boolean isValidMove(Piece[,] board, int x, int y)
         {
-            if (x < 0 || x > 8 || y < 0 || Y > 9) return false;
+            if (x < 0 || x > 8 || y < 0 || y > 9) return false;
 
             return board[y, x] is null || (this.team != board[y, x].team);
         }
