@@ -12,53 +12,49 @@ namespace ChineseChessGame.instances
 {
     internal class Soldier : Piece
     {
-        public Soldier(Texture2D piece, Texture2D border, int x, int y, Team team)
-           : base(piece, border, x, y, team)
+        public Soldier(Texture2D piece, Texture2D border, Team team)
+           : base(piece, border, team)
         { }
 
         protected override void assignValidMoves(Piece[,] board)
         {
+            this.validMoves = new List<int[]>();
+ 
             if (this.team == Team.BLACK)
             {
-                if (this.Y < 5)
+                if (this.isValidMove(board, X, Y + 1))
                 {
-                    this.validMoves = new int[,] { { X, Y + 1 } };
+                    this.validMoves.Add(new int[] { X, Y + 1 });
                 }
-                else
+
+                if (this.Y > 4)
                 {
-                    if (this.X == 0)
+                    if (this.isValidMove(board, X - 1, Y))
                     {
-                        this.validMoves = new int[,] { { X, Y + 1 }, { X + 1, Y } };
+                        this.validMoves.Add(new int[] { X - 1, Y });
                     }
-                    else if (this.X == 8)
+                    if (this.isValidMove(board, X + 1, Y))
                     {
-                        this.validMoves = new int[,] { { X, Y + 1 }, { X - 1, Y } };
+                        this.validMoves.Add(new int[] { X + 1, Y });
                     }
-                    else
-                    {
-                        this.validMoves = new int[,] { { X, Y + 1 }, { X + 1, Y }, { X - 1, Y } };
-                    }
-                }
+                }             
             }
             else
             {
-                if (this.Y > 5)
+                if (this.isValidMove(board, X, Y - 1))
                 {
-                    this.validMoves = new int[,] { { X, Y - 1 } };
+                    this.validMoves.Add(new int[] { X, Y - 1 });
                 }
-                else
+                
+                if (this.Y <= 4)
                 {
-                    if (this.X == 0)
+                    if (this.isValidMove(board, X - 1, Y))
                     {
-                        this.validMoves = new int[,] { { X, Y - 1 }, { X + 1, Y } };
+                        this.validMoves.Add(new int[] { X - 1, Y });
                     }
-                    else if (this.X == 8)
+                    if (this.isValidMove(board, X + 1, Y))
                     {
-                        this.validMoves = new int[,] { { X, Y - 1 }, { X - 1, Y } };
-                    }
-                    else
-                    {
-                        this.validMoves = new int[,] { { X, Y - 1 }, { X + 1, Y }, { X - 1, Y } };
+                        this.validMoves.Add(new int[] { X + 1, Y });
                     }
                 }
             }

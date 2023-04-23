@@ -17,7 +17,7 @@ namespace ChineseChessGame.instances
         protected Texture2D piece;
         protected Rectangle pieceRect;
 
-        protected int[,] validMoves;
+        protected List<int[]> validMoves;
 
         protected Texture2D border;
         protected Rectangle borderRect;
@@ -28,7 +28,7 @@ namespace ChineseChessGame.instances
         protected int X, Y;
         protected Team team;
 
-        public Piece(Texture2D piece, Texture2D border, int x, int y, Team team)
+        public Piece(Texture2D piece, Texture2D border, Team team)
         {
             this.piece = piece;
             this.pieceRect = new Rectangle(0, 0, BOARD.PieceSize, BOARD.PieceSize);
@@ -36,24 +36,24 @@ namespace ChineseChessGame.instances
             this.border = border;
             this.borderRect = new Rectangle(0, 0, BOARD.BorderSize, BOARD.BorderSize);
 
-            this.X = x;
-            this.Y = y;
-
-            int[] coords = this.getPieceCoords(x, y);
-            this.pieceRect.X = coords[0];
-            this.pieceRect.Y = coords[1];
-
             this.team = team;
         }
 
-        public void Update(MouseState mouse, Team turn, Piece[,] board)
+        public void Update(MouseState mouse, Boolean hasClicked, Team turn, Piece[,] board, int x, int y)
         {
+            this.X = x;
+            this.Y = y;
+
+            int[] pieceCoords = this.getPieceCoords(x, y);
+            this.pieceRect.X = pieceCoords[0];
+            this.pieceRect.Y = pieceCoords[1];
+
+            this.assignValidMoves(board);
+            this.assignBorderCoords(this.X, this.Y);
+
             if (this.team == turn && this.isMouseOnPiece(mouse))
             {
-                this.hasHighlightBorder = true;
-                this.assignBorderCoords(this.X, this.Y);
-
-                if (mouse.LeftButton == ButtonState.Released)
+                if (!hasClicked && mouse.LeftButton == ButtonState.Pressed)
                 {
                     if (!this.isSelected)
                     {
@@ -62,14 +62,14 @@ namespace ChineseChessGame.instances
                         {
                             board[coords[1], coords[0]].isSelected = false;
                         }
+                    }
 
-                        this.isSelected = true;
-                        this.assignValidMoves(board);
-                    }
-                    else
-                    {
-                        this.isSelected = false;
-                    }
+                    this.isSelected = !this.isSelected;
+                }
+                
+                if (!this.isSelected)
+                {
+                    this.hasHighlightBorder = true;
                 }
             }
             else
@@ -81,8 +81,12 @@ namespace ChineseChessGame.instances
         {
             spriteBatch.Draw(piece, pieceRect, Color.White);
 
-            
-            if (this.hasHighlightBorder)
+            if (this.isSelected)
+            {
+                this.drawPieceBorder(spriteBatch, BOARD.SelectedColor);
+                this.drawValidMoves(spriteBatch, BOARD.AvailPosColor);
+            }
+            else if (this.hasHighlightBorder)
             {
                 this.drawPieceBorder(spriteBatch, BOARD.BorderColor);
             }
@@ -123,13 +127,27 @@ namespace ChineseChessGame.instances
         }
 
         protected virtual void assignValidMoves(Piece[,] board) { }
-        protected void drawValidMoves(SpriteBatch sb, int[,] validMoves, Color color)
+        protected void drawValidMoves(SpriteBatch sb, Color color)
         {
-            for (int i = 0; i != this.validMoves.GetLength(0); i++)
+            if (this.validMoves is null) return;
+
+            foreach (int[] move in this.validMoves)
             {
-                this.assignBorderCoords(validMoves[i, 0], validMoves[i, 1]);
-                this.drawPieceBorder(sb, color);
+                int[] coords = this.getPieceCoords(move[0], move[1]);
+                this.pieceRect.X = coords[0];
+                this.pieceRect.Y = coords[1];
+                sb.Draw(piece, pieceRect, Color.White * 0.5f);
+
+                this.assignBorderCoords(move[0], move[1]);
+                this.drawPieceBorder(sb, BOARD.AvailPosColor);
             }
+        }
+
+        protected Boolean isValidMove(Piece[,] board, int x, int y)
+        {
+            if (x < 0 || x > 8 || y < 0 || Y > 9) return false;
+
+            return board[y, x] is null || (this.team != board[y, x].team);
         }
 
         protected void drawPieceBorder(SpriteBatch sb, Color color)
