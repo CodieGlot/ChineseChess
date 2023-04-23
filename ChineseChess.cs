@@ -199,6 +199,17 @@ namespace ChineseChessGame
                     }
                 }
             }
+
+            for (int y = 0; y != 10; y++)
+            {
+                for (int x = 0; x != 9; x++)
+                {
+                    if (board[y, x] is not null)
+                    {
+                        board[y, x].DrawPieceBorder(spriteBatch);
+                    }
+                }
+            }
         }
 
         private void drawBoardBorder()

@@ -77,18 +77,21 @@ namespace ChineseChessGame.instances
                 this.hasHighlightBorder = false;
             }
         }
-        public void Draw(SpriteBatch spriteBatch)
+        public void Draw(SpriteBatch sb)
         {
-            spriteBatch.Draw(piece, pieceRect, Color.White);
+            sb.Draw(piece, pieceRect, Color.White);
+        }
 
+        public void DrawPieceBorder(SpriteBatch sb)
+        {
             if (this.isSelected)
             {
-                this.drawPieceBorder(spriteBatch, BOARD.SelectedColor);
-                this.drawValidMoves(spriteBatch, BOARD.AvailPosColor);
+                this.drawPieceBorder(sb, BOARD.SelectedColor);
+                this.drawValidMoves(sb, BOARD.AvailPosColor);
             }
             else if (this.hasHighlightBorder)
             {
-                this.drawPieceBorder(spriteBatch, BOARD.BorderColor);
+                this.drawPieceBorder(sb, BOARD.BorderColor);
             }
         }
         protected Boolean isMouseOnPiece(MouseState mouse)
