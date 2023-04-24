@@ -102,24 +102,26 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\PC0\\.nuget\\packages\\": {}
+    "C:\\Users\\84903\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\PC0\\source\\repos\\ChineseChessGame\\ChineseChessGame.csproj",
+      "projectUniqueName": "C:\\Users\\84903\\OneDrive\\Documents\\GitHub\\ChineseChess\\ChineseChessGame.csproj",
       "projectName": "ChineseChessGame",
-      "projectPath": "C:\\Users\\PC0\\source\\repos\\ChineseChessGame\\ChineseChessGame.csproj",
-      "packagesPath": "C:\\Users\\PC0\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\PC0\\source\\repos\\ChineseChessGame\\obj\\",
+      "projectPath": "C:\\Users\\84903\\OneDrive\\Documents\\GitHub\\ChineseChess\\ChineseChessGame.csproj",
+      "packagesPath": "C:\\Users\\84903\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\84903\\OneDrive\\Documents\\GitHub\\ChineseChess\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\PC0\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        "C:\\Users\\84903\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
         "net6.0"
       ],
       "sources": {
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
@@ -163,7 +165,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.203\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.401\\RuntimeIdentifierGraph.json"
       }
     }
   }

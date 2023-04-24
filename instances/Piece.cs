@@ -152,7 +152,7 @@ namespace ChineseChessGame.instances
 
             return board[y, x] is null || (this.team != board[y, x].team);
         }
-
+         
         protected void drawPieceBorder(SpriteBatch sb, Color color)
         {
             int x, y;
@@ -193,5 +193,7 @@ namespace ChineseChessGame.instances
                 SpriteEffects.None,
                 0);
         }
+        
+        
     }
 }
