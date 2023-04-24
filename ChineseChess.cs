@@ -6,6 +6,7 @@ using Microsoft.Xna.Framework.Media;
 using System;
 using System.Runtime.CompilerServices;
 using ChineseChessGame.constants;
+using System.Collections.Generic;
 
 namespace ChineseChessGame
 {
@@ -17,10 +18,13 @@ namespace ChineseChessGame
         private KeyboardState kb;
         private MouseState mouse;
 
+        private List<Song> bgm;
+        private int songIndex = 0;
+        private Texture2D switchBgm;
+        private Rectangle switchBgmRect;
+
         private MouseState oldMouse;
         private Boolean hasClicked;
-
-        private Song bgm;
 
         private Texture2D background;
         private Rectangle backgroundRect;
@@ -68,10 +72,6 @@ namespace ChineseChessGame
             background = Content.Load<Texture2D>("textures/background");
             backgroundRect = new Rectangle(0, 0, WINDOW.WindowWidth, WINDOW.WindowHeight);
 
-            bgm = Content.Load<Song>("audio/bgm");
-            MediaPlayer.Play(bgm);
-            MediaPlayer.IsRepeating = true;
-
             line = new Texture2D(graphics.GraphicsDevice, 1, 1, false, SurfaceFormat.Color);
             line.SetData<Color>(new[] { Color.White });
 
@@ -82,6 +82,7 @@ namespace ChineseChessGame
             bannerPos = new Vector2(10, 10);
 
             this.initBoard();
+            this.initBgm();
         }
 
         protected override void Update(GameTime gameTime)
@@ -107,6 +108,11 @@ namespace ChineseChessGame
             }
             oldMouse = mouse;
 
+            if (this.hasClickedRect(mouse, this.switchBgmRect, hasClicked))
+            {
+                this.switchBgmAction();
+            }
+
             this.updateBoard();
 
             base.Update(gameTime);
@@ -124,6 +130,9 @@ namespace ChineseChessGame
             this.drawBoardBorder();
 
             spriteBatch.DrawString(textFont, WINDOW.banner, bannerPos, Color.White);
+
+            spriteBatch.DrawString(textFont, "Switch Bgm", new Vector2(BGM.SwitchBgmX - 160, BGM.SwitchBgmY - 10), Color.White);
+            spriteBatch.Draw(switchBgm, switchBgmRect, Color.Gray);
 
             this.drawBoard();
 
@@ -258,7 +267,7 @@ namespace ChineseChessGame
             this.drawBoardLine(spriteBatch, new Vector2(startX, startY), new Vector2(endX, endY));
         }
 
-        public void drawBoardLine(SpriteBatch sb, Vector2 start, Vector2 end)
+        private void drawBoardLine(SpriteBatch sb, Vector2 start, Vector2 end)
         {
             Vector2 edge = end - start;
 
@@ -278,5 +287,36 @@ namespace ChineseChessGame
                 SpriteEffects.None,
                 0);
         }
+
+        private Boolean hasClickedRect(MouseState mouse, Rectangle rect, Boolean hasClicked)
+        {
+            return !hasClicked && (mouse.LeftButton == ButtonState.Pressed) 
+                && (mouse.X >= rect.X && mouse.X < rect.X + rect.Width)
+                && (mouse.Y >= rect.Y && mouse.Y < rect.Y + rect.Height);
+        }
+        private void initBgm()
+        {
+            bgm = new List<Song>();
+
+            bgm.Add(Content.Load<Song>("audio/bgm"));
+            bgm.Add(Content.Load<Song>("audio/bgm1"));
+
+            switchBgm = Content.Load<Texture2D>("textures/switch-song");
+            switchBgmRect = new Rectangle(BGM.SwitchBgmX, BGM.SwitchBgmY, BGM.SwitchBgmSize, BGM.SwitchBgmSize);
+
+            MediaPlayer.Play(bgm[songIndex]);
+            MediaPlayer.IsRepeating = true;
+        }
+
+        private void switchBgmAction()
+        {
+            this.songIndex++;
+            if (this.songIndex == this.bgm.Count)
+            {
+                this.songIndex = 0;
+            }
+
+            MediaPlayer.Play(bgm[songIndex]);
+        }  
     }
 }

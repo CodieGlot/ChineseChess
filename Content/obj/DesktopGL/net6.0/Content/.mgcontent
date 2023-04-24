@@ -5,6 +5,7 @@
   <Config />
   <SourceFiles>
     <File>C:/Users/PC0/source/repos/ChineseChessGame/Content/audio/bgm.mp3</File>
+    <File>C:/Users/PC0/source/repos/ChineseChessGame/Content/audio/bgm1.mp3</File>
     <File>C:/Users/PC0/source/repos/ChineseChessGame/Content/fonts/textFont.spritefont</File>
     <File>C:/Users/PC0/source/repos/ChineseChessGame/Content/pieces/advisor-black.png</File>
     <File>C:/Users/PC0/source/repos/ChineseChessGame/Content/pieces/advisor-red.png</File>
@@ -22,8 +23,11 @@
     <File>C:/Users/PC0/source/repos/ChineseChessGame/Content/pieces/soldier-red.png</File>
     <File>C:/Users/PC0/source/repos/ChineseChessGame/Content/textures/background.jpg</File>
     <File>C:/Users/PC0/source/repos/ChineseChessGame/Content/textures/border.png</File>
+    <File>C:/Users/PC0/source/repos/ChineseChessGame/Content/textures/switch-song.png</File>
   </SourceFiles>
   <DestFiles>
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />

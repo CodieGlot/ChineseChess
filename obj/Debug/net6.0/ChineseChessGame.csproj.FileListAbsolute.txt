@@ -42,3 +42,6 @@ C:\Users\PC0\source\repos\ChineseChessGame\bin\Debug\net6.0\Content\pieces\horse
 C:\Users\PC0\source\repos\ChineseChessGame\bin\Debug\net6.0\Content\pieces\horse-red.xnb
 C:\Users\PC0\source\repos\ChineseChessGame\bin\Debug\net6.0\Content\pieces\soldier-black.xnb
 C:\Users\PC0\source\repos\ChineseChessGame\bin\Debug\net6.0\Content\pieces\soldier-red.xnb
+C:\Users\PC0\source\repos\ChineseChessGame\bin\Debug\net6.0\Content\audio\bgm1.ogg
+C:\Users\PC0\source\repos\ChineseChessGame\bin\Debug\net6.0\Content\audio\bgm1.xnb
+C:\Users\PC0\source\repos\ChineseChessGame\bin\Debug\net6.0\Content\textures\switch-song.xnb
