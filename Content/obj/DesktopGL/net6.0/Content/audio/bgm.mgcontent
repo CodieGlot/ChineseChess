@@ -1,1 +1,20 @@
-<?xml version="1.0" encoding="utf-8"?><PipelineBuildEvent xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"><SourceFile>C:/Users/84903/OneDrive/Documents/GitHub/ChineseChess/Content/audio/bgm.mp3</SourceFile><SourceTime>2023-04-22T08:42:47.2240367+07:00</SourceTime><DestFile>C:/Users/84903/OneDrive/Documents/GitHub/ChineseChess/Content/bin/DesktopGL/Content/audio/bgm.xnb</DestFile><DestTime>2023-04-24T09:17:31.2705804+07:00</DestTime><Importer>Mp3Importer</Importer><ImporterTime>2022-07-26T18:44:56+07:00</ImporterTime><Processor>SongProcessor</Processor><ProcessorTime>2022-07-26T18:44:56+07:00</ProcessorTime><Parameters><Key>Quality</Key><Value>Best</Value></Parameters><Dependencies /><BuildAsset /><BuildOutput><string>C:/Users/84903/OneDrive/Documents/GitHub/ChineseChess/Content/bin/DesktopGL/Content/audio/bgm.ogg</string></BuildOutput></PipelineBuildEvent>
+<?xml version="1.0" encoding="utf-8"?>
+<PipelineBuildEvent xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <SourceFile>C:/Users/PC0/source/repos/ChineseChessGame/Content/audio/bgm.mp3</SourceFile>
+  <SourceTime>2023-04-21T20:02:19.2601498+07:00</SourceTime>
+  <DestFile>C:/Users/PC0/source/repos/ChineseChessGame/Content/bin/DesktopGL/Content/audio/bgm.xnb</DestFile>
+  <DestTime>2023-04-24T18:29:44.7956339+07:00</DestTime>
+  <Importer>Mp3Importer</Importer>
+  <ImporterTime>2022-07-26T18:44:56+07:00</ImporterTime>
+  <Processor>SongProcessor</Processor>
+  <ProcessorTime>2022-07-26T18:44:56+07:00</ProcessorTime>
+  <Parameters>
+    <Key>Quality</Key>
+    <Value>Best</Value>
+  </Parameters>
+  <Dependencies />
+  <BuildAsset />
+  <BuildOutput>
+    <string>C:/Users/PC0/source/repos/ChineseChessGame/Content/bin/DesktopGL/Content/audio/bgm.ogg</string>
+  </BuildOutput>
+</PipelineBuildEvent>

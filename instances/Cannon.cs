@@ -13,8 +13,6 @@ namespace ChineseChessGame.instances
         public Cannon(Texture2D piece, Texture2D border, Team team)
            : base(piece, border, team)
         { }
-
-        // Mot nuoc di la hop le voi quan phao neu no chua co quan nao dung truoc do, hoac giua o do voi phao co dung 1 quan khac
         protected override void assignValidMoves(Piece[,] board)
         {
             this.validMoves = new List<int[]>();

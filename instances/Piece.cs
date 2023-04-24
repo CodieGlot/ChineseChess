@@ -136,11 +136,6 @@ namespace ChineseChessGame.instances
 
             foreach (int[] move in this.validMoves)
             {
-                int[] coords = this.getPieceCoords(move[0], move[1]);
-                this.pieceRect.X = coords[0];
-                this.pieceRect.Y = coords[1];
-                sb.Draw(piece, pieceRect, Color.White * 0.5f);
-
                 this.assignBorderCoords(move[0], move[1]);
                 this.drawPieceBorder(sb, BOARD.AvailPosColor);
             }
