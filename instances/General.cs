@@ -39,9 +39,6 @@ namespace ChineseChessGame.instances
             }
             else if(this.team==Team.RED)
             {
-                this.validMoves.Add(new int[] { 0, 0 });
-                this.validMoves.Add(new int[] { 4, 8 });
-                /*
                 int XValidMin = 3, XValidMax = 5, YValidMin = 7, YValidMax = 9;
                 if (YValidMin <= Y - 1 && Y - 1 <= YValidMax && this.isValidMove(board, X, Y - 1))
                 {
@@ -59,7 +56,6 @@ namespace ChineseChessGame.instances
                 {
                     this.validMoves.Add(new int[] { X + 1, Y });
                 }
-                */
             }
         }
     }
