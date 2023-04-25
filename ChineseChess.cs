@@ -296,10 +296,11 @@ namespace ChineseChessGame
         }
         private void initBgm()
         {
-            bgm = new List<Song>();
-
-            bgm.Add(Content.Load<Song>("audio/bgm"));
-            bgm.Add(Content.Load<Song>("audio/bgm1"));
+            bgm = new List<Song>()
+            {
+                Content.Load<Song>("audio/bgm"),
+                Content.Load<Song>("audio/bgm1")
+            };
 
             switchBgm = Content.Load<Texture2D>("textures/switch-song");
             switchBgmRect = new Rectangle(BGM.SwitchBgmX, BGM.SwitchBgmY, BGM.SwitchBgmSize, BGM.SwitchBgmSize);
