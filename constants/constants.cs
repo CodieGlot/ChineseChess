@@ -34,9 +34,11 @@ namespace ChineseChessGame.constants
 
     internal static class BGM
     {
-        public static int SwitchBgmX = 1550, SwitchBgmY = 850;
+        public static int SwitchBgmX = WINDOW.WindowWidth - 50, SwitchBgmY = WINDOW.WindowHeight - 100;
 
-        public static int SwitchBgmSize = 25;
+        public static int StopBgmX = WINDOW.WindowWidth - 50, StopBgmY = WINDOW.WindowHeight - 50;   
+
+        public static int ButtonSize = 30;
     }
 
     public enum Team {

@@ -20,8 +20,13 @@ namespace ChineseChessGame
 
         private List<Song> bgm;
         private int songIndex = 0;
+
         private Texture2D switchBgm;
         private Rectangle switchBgmRect;
+
+        private Texture2D toggleBgm;
+        private Rectangle toggleBgmRect;
+        private Boolean isBgmOn = true;
 
         private MouseState oldMouse;
         private Boolean hasClicked;
@@ -112,6 +117,10 @@ namespace ChineseChessGame
             {
                 this.switchBgmAction();
             }
+            else if (this.hasClickedRect(mouse, this.toggleBgmRect, hasClicked))
+            {
+                this.toggleBgmAction();
+            }
 
             this.updateBoard();
 
@@ -132,7 +141,10 @@ namespace ChineseChessGame
             spriteBatch.DrawString(textFont, WINDOW.banner, bannerPos, Color.White);
 
             spriteBatch.DrawString(textFont, "Switch Bgm", new Vector2(BGM.SwitchBgmX - 160, BGM.SwitchBgmY - 10), Color.White);
-            spriteBatch.Draw(switchBgm, switchBgmRect, Color.Gray);
+            spriteBatch.Draw(switchBgm, switchBgmRect, Color.White);
+
+            spriteBatch.DrawString(textFont, "Stop Bgm", new Vector2(BGM.StopBgmX - 140, BGM.StopBgmY - 10), Color.White);
+            spriteBatch.Draw(toggleBgm, toggleBgmRect, Color.White);
 
             this.drawBoard();
 
@@ -303,7 +315,10 @@ namespace ChineseChessGame
             };
 
             switchBgm = Content.Load<Texture2D>("textures/switch-song");
-            switchBgmRect = new Rectangle(BGM.SwitchBgmX, BGM.SwitchBgmY, BGM.SwitchBgmSize, BGM.SwitchBgmSize);
+            switchBgmRect = new Rectangle(BGM.SwitchBgmX, BGM.SwitchBgmY, BGM.ButtonSize, BGM.ButtonSize);
+
+            toggleBgm = Content.Load<Texture2D>("textures/stop-song");
+            toggleBgmRect = new Rectangle(BGM.StopBgmX, BGM.StopBgmY, BGM.ButtonSize, BGM.ButtonSize);
 
             MediaPlayer.Play(bgm[songIndex]);
             MediaPlayer.IsRepeating = true;
@@ -319,5 +334,19 @@ namespace ChineseChessGame
 
             MediaPlayer.Play(bgm[songIndex]);
         }  
+
+        private void toggleBgmAction()
+        {
+           if (this.isBgmOn)
+            {
+                MediaPlayer.Stop();
+            }
+           else
+            {
+                MediaPlayer.Play(bgm[songIndex]);
+            }
+
+            this.isBgmOn = !this.isBgmOn;
+        }
     }
 }
