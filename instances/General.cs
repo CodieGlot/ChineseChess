@@ -16,8 +16,8 @@ namespace ChineseChessGame.instances
         { }
         protected override void assignValidMoves(Piece[,] board)
         {
-
             this.validMoves = new List<int[]>();
+
             if (this.team == Team.BLACK) {
                 int XValidMin = 3, XValidMax = 5, YValidMin = 0, YValidMax = 2;
                 if (YValidMin <= Y - 1 && Y - 1 <= YValidMax && this.isValidMove(board, X, Y - 1))

@@ -158,19 +158,17 @@ namespace ChineseChessGame
         {
             board = new Piece[10,9];
 
-            // CHANGE TO CHILD CLASSES WHEN DONE
-
             board[0, 0] = new Chariot(Content.Load<Texture2D>("pieces/chariot-black"), border, Team.BLACK);
-            board[0, 1] = new Piece(Content.Load<Texture2D>("pieces/horse-black"), border, Team.BLACK);
+            board[0, 1] = new Horse(Content.Load<Texture2D>("pieces/horse-black"), border, Team.BLACK);
             board[0, 2] = new Elephant(Content.Load<Texture2D>("pieces/elephant-black"), border, Team.BLACK);
             board[0, 3] = new Advisor(Content.Load<Texture2D>("pieces/advisor-black"), border, Team.BLACK);
-            board[0, 4] = new Piece(Content.Load<Texture2D>("pieces/general-black"), border, Team.BLACK);
+            board[0, 4] = new General(Content.Load<Texture2D>("pieces/general-black"), border, Team.BLACK);
             board[0, 5] = new Advisor(Content.Load<Texture2D>("pieces/advisor-black"), border, Team.BLACK);
             board[0, 6] = new Elephant(Content.Load<Texture2D>("pieces/elephant-black"), border, Team.BLACK);
-            board[0, 7] = new Piece(Content.Load<Texture2D>("pieces/horse-black"), border, Team.BLACK);
+            board[0, 7] = new Horse(Content.Load<Texture2D>("pieces/horse-black"), border, Team.BLACK);
             board[0, 8] = new Chariot(Content.Load<Texture2D>("pieces/chariot-black"), border, Team.BLACK);
-            board[2, 1] = new Piece(Content.Load<Texture2D>("pieces/cannon-black"), border, Team.BLACK);
-            board[2, 7] = new Piece(Content.Load<Texture2D>("pieces/cannon-black"), border, Team.BLACK);
+            board[2, 1] = new Cannon(Content.Load<Texture2D>("pieces/cannon-black"), border, Team.BLACK);
+            board[2, 7] = new Cannon(Content.Load<Texture2D>("pieces/cannon-black"), border, Team.BLACK);
             board[3, 0] = new Soldier(Content.Load<Texture2D>("pieces/soldier-black"), border, Team.BLACK);
             board[3, 2] = new Soldier(Content.Load<Texture2D>("pieces/soldier-black"), border, Team.BLACK);
             board[3, 4] = new Soldier(Content.Load<Texture2D>("pieces/soldier-black"), border, Team.BLACK);
@@ -181,7 +179,7 @@ namespace ChineseChessGame
             board[9, 1] = new Horse(Content.Load<Texture2D>("pieces/horse-red"), border, Team.RED);
             board[9, 2] = new Elephant(Content.Load<Texture2D>("pieces/elephant-red"), border, Team.RED);
             board[9, 3] = new Advisor(Content.Load<Texture2D>("pieces/advisor-red"), border, Team.RED);
-            board[9, 4] = new Piece(Content.Load<Texture2D>("pieces/general-red"), border, Team.RED);
+            board[9, 4] = new General(Content.Load<Texture2D>("pieces/general-red"), border, Team.RED);
             board[9, 5] = new Advisor(Content.Load<Texture2D>("pieces/advisor-red"), border, Team.RED);
             board[9, 6] = new Elephant(Content.Load<Texture2D>("pieces/elephant-red"), border, Team.RED);
             board[9, 7] = new Horse(Content.Load<Texture2D>("pieces/horse-red"), border, Team.RED);

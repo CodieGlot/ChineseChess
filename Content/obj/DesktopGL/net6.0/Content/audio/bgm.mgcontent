@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-  <SourceFile>C:/Users/MINH TOAN/source/repos/ChineseChessC#/Content/audio/bgm.mp3</SourceFile>
-  <SourceTime>2023-04-24T16:16:57.8271483+07:00</SourceTime>
-  <DestFile>C:/Users/MINH TOAN/source/repos/ChineseChessC#/Content/bin/DesktopGL/Content/audio/bgm.xnb</DestFile>
-  <DestTime>2023-04-25T10:59:14.7480506+07:00</DestTime>
+  <SourceFile>C:/Users/PC0/source/repos/ChineseChessGame/Content/audio/bgm.mp3</SourceFile>
+  <SourceTime>2023-04-21T20:02:19.2601498+07:00</SourceTime>
+  <DestFile>C:/Users/PC0/source/repos/ChineseChessGame/Content/bin/DesktopGL/Content/audio/bgm.xnb</DestFile>
+  <DestTime>2023-04-25T15:48:38.667965+07:00</DestTime>
   <Importer>Mp3Importer</Importer>
   <ImporterTime>2022-07-26T18:44:56+07:00</ImporterTime>
   <Processor>SongProcessor</Processor>
@@ -15,6 +15,6 @@
   <Dependencies />
   <BuildAsset />
   <BuildOutput>
-    <string>C:/Users/MINH TOAN/source/repos/ChineseChessC#/Content/bin/DesktopGL/Content/audio/bgm.ogg</string>
+    <string>C:/Users/PC0/source/repos/ChineseChessGame/Content/bin/DesktopGL/Content/audio/bgm.ogg</string>
   </BuildOutput>
 </PipelineBuildEvent>

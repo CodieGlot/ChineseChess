@@ -87,7 +87,7 @@ namespace ChineseChessGame.instances
             if (this.isSelected)
             {
                 this.drawPieceBorder(sb, BOARD.SelectedColor);
-                this.drawValidMoves(sb, BOARD.AvailPosColor);
+                this.drawValidMoves(sb);
             }
             else if (this.hasHighlightBorder)
             {
@@ -130,7 +130,7 @@ namespace ChineseChessGame.instances
         }
 
         protected virtual void assignValidMoves(Piece[,] board) { }
-        protected void drawValidMoves(SpriteBatch sb, Color color)
+        protected void drawValidMoves(SpriteBatch sb)
         {
             if (this.validMoves is null) return;
 
