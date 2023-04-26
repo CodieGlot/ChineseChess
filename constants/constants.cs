@@ -54,7 +54,7 @@ namespace ChineseChessGame.constants
         public int[] end;
         public Piece deletedPiece;
 
-        public Turn(int[] start, int[] end, Piece deletedPiece = null)
+        public Turn(int[] start, int[] end, Piece deletedPiece)
         {
             this.start = start;
             this.end = end;

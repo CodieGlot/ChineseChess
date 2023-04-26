@@ -14,42 +14,37 @@ namespace ChineseChessGame.instances
            : base(piece, border, team)
         { }
 
+        
         protected override void assignValidMoves(Piece[,] board)
         {
             this.validMoves = new List<int[]>();
 
-            if (X < 5)
+            if(this.team==Team.RED)
             {
-
-                if (this.isValidMove(board, X + 1, Y + 1))
+                if(X==4 && Y==8)
                 {
-                    if(this.isValidMove(board, X - 1, Y - 1))
-                    {
-                        this.validMoves.Add(new int[] { X - 1, Y - 1 });
-                    }
-                    if(this.isValidMove(board,X-1,Y+1))
-                    {
-                        this.validMoves.Add(new int[] { X - 1, Y + 1 });
-                    }
+                    if(this.isValidMove(board,X+1,Y+1)) this.validMoves.Add(new int[] {X+1,Y+1});
+                    if (this.isValidMove(board, X + 1, Y - 1)) this.validMoves.Add(new int[] { X + 1, Y - 1 });
+                    if (this.isValidMove(board, X - 1, Y - 1)) this.validMoves.Add(new int[] { X - 1, Y - 1 });
+                    if (this.isValidMove(board, X - 1, Y + 1)) this.validMoves.Add(new int[] { X - 1, Y + 1 });
                 }
-            {
-
-                }
-                if (this.isValidMove(board, X + 1, Y - 1))
+                else
                 {
-                    this.validMoves.Add(new int[] { X + 1, Y - 1 });
+                    if (this.isValidMove(board, 4, 8)) this.validMoves.Add(new int[] { 4, 8 });
                 }
             }
-
-            if (X > 3)
+            else
             {
-                if (this.isValidMove(board, X - 1, Y - 1))
+                if (X == 4 && Y == 1)
                 {
-                    this.validMoves.Add(new int[] { X - 1, Y - 1 });
+                    if (this.isValidMove(board, X + 1, Y + 1)) this.validMoves.Add(new int[] { X + 1, Y + 1 });
+                    if (this.isValidMove(board, X + 1, Y - 1)) this.validMoves.Add(new int[] { X + 1, Y - 1 });
+                    if (this.isValidMove(board, X - 1, Y - 1)) this.validMoves.Add(new int[] { X - 1, Y - 1 });
+                    if (this.isValidMove(board, X - 1, Y + 1)) this.validMoves.Add(new int[] { X - 1, Y + 1 });
                 }
-                if (this.isValidMove(board, X - 1, Y + 1))
+                else
                 {
-                    this.validMoves.Add(new int[] { X - 1, Y + 1 });
+                    if (this.isValidMove(board, 4, 1)) this.validMoves.Add(new int[] { 4, 1 });
                 }
             }
         } 

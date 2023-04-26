@@ -16,26 +16,26 @@ namespace ChineseChessGame.instances
         protected override void assignValidMoves(Piece[,] board)
         {
             this.validMoves = new List<int[]>();
-            
-            if(isValidMove(board,X,Y-1))
+
+            if (this.isValidMove(board, X, Y - 1) && board[Y-1,X] is null )
             {
                 if(isValidMove(board,X+1,Y-2)) this.validMoves.Add(new int[] {X+1,Y-2});
                 if (isValidMove(board, X - 1, Y - 2)) this.validMoves.Add(new int[] { X - 1, Y - 2 });
             }
 
-            if(isValidMove(board,X+1,Y))
+            if(this.isValidMove(board, X + 1, Y) && board[Y , X+1] is null )
             {
                 if (isValidMove(board, X + 2, Y - 1)) this.validMoves.Add(new int[] { X + 2, Y - 1 });
                 if (isValidMove(board, X + 2, Y + 1)) this.validMoves.Add(new int[] { X + 2, Y + 1 });
             }
 
-            if(isValidMove(board,X,Y+1))
+            if ( this.isValidMove(board, X, Y + 1) && board[Y+1,X] is null )
             {
                 if (isValidMove(board, X + 1, Y + 2)) this.validMoves.Add(new int[] { X + 1, Y + 2 });
                 if (isValidMove(board, X - 1, Y + 2)) this.validMoves.Add(new int[] { X - 1, Y + 2 });
             }
 
-            if(isValidMove(board,X-1,Y))
+            if (this.isValidMove(board, X - 1, Y) && board[Y,X-1] is null )
             {
                 if (isValidMove(board, X - 2, Y + 1)) this.validMoves.Add(new int[] { X - 2, Y + 1 });
                 if (isValidMove(board, X - 2, Y - 1)) this.validMoves.Add(new int[] { X - 2, Y - 1 });
