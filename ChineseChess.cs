@@ -41,8 +41,14 @@ namespace ChineseChessGame
 
         private Vector2 bannerPos;
 
+        private string turnText;
+        private Vector2 turnPos;
+        private Color turnColor;
+
         private Piece[,] board;
+
         private Team turn = Team.RED;
+        private List<Turn> turnsLog = new List<Turn>();
 
         public ChineseChess()
         {
@@ -85,6 +91,7 @@ namespace ChineseChessGame
 
             textFont = Content.Load<SpriteFont>("fonts/textFont");
             bannerPos = new Vector2(10, 10);
+            turnPos = new Vector2(WINDOW.WindowWidth - 300, 100);
 
             this.initBoard();
             this.initBgm();
@@ -122,6 +129,17 @@ namespace ChineseChessGame
                 this.toggleBgmAction();
             }
 
+            if (turn == Team.RED)
+            {
+                turnText = "RED TEAM TURN";
+                turnColor = Color.Red;
+            }
+            else
+            {
+                turnText = "BLACK TEAM TURN";
+                turnColor = Color.Black;
+            }
+
             this.updateBoard();
 
             base.Update(gameTime);
@@ -139,6 +157,7 @@ namespace ChineseChessGame
             this.drawBoardBorder();
 
             spriteBatch.DrawString(textFont, WINDOW.banner, bannerPos, Color.White);
+            spriteBatch.DrawString(textFont, turnText, turnPos, turnColor);
 
             spriteBatch.DrawString(textFont, "Switch Bgm", new Vector2(BGM.SwitchBgmX - 160, BGM.SwitchBgmY - 10), Color.White);
             spriteBatch.Draw(switchBgm, switchBgmRect, Color.White);
@@ -202,6 +221,28 @@ namespace ChineseChessGame
                     if (board[y, x] is not null)
                     {
                         board[y, x].Update(mouse, hasClicked, turn, board, x, y);
+                    }
+                }
+            }
+
+            for (int y = 0; y != 10; y++)
+            {
+                for (int x = 0; x != 9; x++)
+                {
+                    if (board[y, x] is not null)
+                    {
+                        int[] coords = board[y, x].getValidMoveClicked(mouse, hasClicked);
+
+                        if (coords != null)
+                        {
+                            turnsLog.Add(new Turn(new int[] { x, y }, coords, board[coords[1], coords[0]]));
+                            turn = (turn == Team.RED) ? Team.BLACK : Team.RED;
+
+                            board[y, x].isSelected = false;
+
+                            board[coords[1], coords[0]] = board[y, x];
+                            board[y, x] = null;
+                        }
                     }
                 }
             }

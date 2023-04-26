@@ -4,6 +4,7 @@ using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ChineseChessGame.instances;
 using Microsoft.Xna.Framework;
 
 namespace ChineseChessGame.constants
@@ -44,5 +45,18 @@ namespace ChineseChessGame.constants
     public enum Team {
         RED,
         BLACK
+    }
+    internal class Turn
+    {
+        int[] start;
+        int[] end;
+        Piece piece;
+
+        public Turn(int[] start, int[] end, Piece piece = null)
+        {
+            this.start = start;
+            this.end = end;
+            this.piece = piece;
+        }
     }
 }

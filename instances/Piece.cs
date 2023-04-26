@@ -23,7 +23,7 @@ namespace ChineseChessGame.instances
         protected Rectangle borderRect;
 
         protected Boolean hasHighlightBorder = false;
-        protected Boolean isSelected = false;
+        public Boolean isSelected = false;
 
         protected int X, Y;
         protected Team team;
@@ -98,6 +98,67 @@ namespace ChineseChessGame.instances
         {
             return (mouse.X >= pieceRect.X && mouse.X < pieceRect.X + BOARD.PieceSize) &&
                 (mouse.Y >= pieceRect.Y && mouse.Y < pieceRect.Y + BOARD.PieceSize);
+        }
+
+        protected int[] getPositionClicked(MouseState mouse)
+        {
+            int coordX = mouse.X - BOARD.BoardMarginLeft, coordY = mouse.Y - BOARD.BoardMarginTop;
+            int x, y;
+            int remX, remY;
+
+            if (coordX < 0)
+            {
+                if (coordX < -BOARD.BorderSize / 2) return null;
+                else x = 0;
+            }
+
+            if (coordX >= BOARD.BoardWidth)
+            {
+                if (coordX > BOARD.BoardWidth + BOARD.BorderSize / 2) return null;
+                else x = 8;
+            }
+
+            if (coordY < 0)
+            {
+                if (coordY < -BOARD.BorderSize / 2) return null;
+                else y = 0;
+            }
+
+            if (coordY >= BOARD.BoardHeight)
+            {
+                if (coordY > BOARD.BoardHeight + BOARD.BorderSize / 2) return null;
+                else y = 9;
+            }
+
+            x = Math.DivRem(coordX, BOARD.CellGap, out remX);
+            y = Math.DivRem(coordY, BOARD.CellGap, out remY);
+
+            if (remX >= BOARD.CellGap - BOARD.BorderSize / 2) x++;
+            else if (remX > BOARD.BorderSize / 2) return null;
+
+            if (remY >= BOARD.CellGap - BOARD.BorderSize / 2) y++;
+            else if (remY > BOARD.BorderSize / 2) return null;
+
+            return new int[] { x, y };
+        }
+        public int[] getValidMoveClicked(MouseState mouse, Boolean hasClicked)
+        {
+            if (!hasClicked && mouse.LeftButton == ButtonState.Pressed && this.isSelected)
+            {
+                int[] coords = this.getPositionClicked(mouse);
+
+                if (coords is null) return null;
+
+                foreach (int[] move in this.validMoves)
+                {
+                    if (coords[0] == move[0] && coords[1] == move[1])
+                    {
+                        return coords;
+                    }
+                }
+            }
+
+            return null;
         }
 
         protected int[] getSelectedPieceCoords(Piece[,] board)
