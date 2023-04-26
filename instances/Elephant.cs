@@ -20,22 +20,22 @@ namespace ChineseChessGame.instances
 
             if(this.team==Team.BLACK)
             {
-                if(isValidMove(board,X-2,Y-2))
+                if(this.isValidMove(board,X-2,Y-2))
                 {
                     if(board[Y - 1, X - 1] is null) this.validMoves.Add(new int[] { X - 2, Y - 2 });
                 }
                 
-                if (isValidMove(board, X + 2, Y-2))
+                if (this.isValidMove(board, X + 2, Y-2))
                 {
                     if (board[Y - 1, X + 1] is null) this.validMoves.Add(new int[] { X + 2, Y - 2 });
                 }
 
-                if(Y<4&&isValidMove(board,X-2,Y+2))
+                if(this.Y<4&&this.isValidMove(board,X-2,Y+2))
                 {
                     if (board[Y + 1, X - 1] is null) this.validMoves.Add(new int[] { X - 2, Y + 2 });
                 }
 
-                if (Y < 4 && isValidMove(board, X + 2, Y + 2))
+                if (this.Y < 4 && this.isValidMove(board, X + 2, Y + 2))
                 {
                     if (board[Y + 1, X + 1] is null) this.validMoves.Add(new int[] { X + 2, Y + 2 });
                 }
@@ -43,22 +43,22 @@ namespace ChineseChessGame.instances
             
             else
             {
-                if (isValidMove(board, X - 2, Y + 2))
+                if (this.isValidMove(board, X - 2, Y + 2))
                 {
-                    if (board[Y + 1, X - 1] is null) this.validMoves.Add(new int[] { X - 2, Y - 2 });
+                    if (board[Y + 1, X - 1] is null) this.validMoves.Add(new int[] { X - 2, Y + 2 });
                 }
 
-                if (isValidMove(board, X + 2, Y + 2))
+                if (this.isValidMove(board, X + 2, Y + 2))
                 {
                     if (board[Y + 1, X + 1] is null) this.validMoves.Add(new int[] { X + 2, Y + 2 });
                 }
 
-                if (Y > 5 && isValidMove(board, X - 2, Y - 2))
+                if (this.Y > 5 && this.isValidMove(board, X - 2, Y - 2))
                 {
                     if (board[Y - 1, X - 1] is null) this.validMoves.Add(new int[] { X - 2, Y - 2 });
                 }
 
-                if (Y > 5 && isValidMove(board, X + 2, Y - 2))
+                if (this.Y > 5 && this.isValidMove(board, X + 2, Y - 2))
                 {
                     if (board[Y - 1, X + 1] is null) this.validMoves.Add(new int[] { X + 2, Y - 2 });
                 }
