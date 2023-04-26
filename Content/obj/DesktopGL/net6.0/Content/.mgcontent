@@ -25,8 +25,10 @@
     <File>C:/Users/PC0/source/repos/ChineseChessGame/Content/textures/border.png</File>
     <File>C:/Users/PC0/source/repos/ChineseChessGame/Content/textures/stop-song.png</File>
     <File>C:/Users/PC0/source/repos/ChineseChessGame/Content/textures/switch-song.png</File>
+    <File>C:/Users/PC0/source/repos/ChineseChessGame/Content/textures/undo-move.jpg</File>
   </SourceFiles>
   <DestFiles>
+    <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />

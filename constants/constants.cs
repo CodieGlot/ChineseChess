@@ -33,11 +33,13 @@ namespace ChineseChessGame.constants
         public static Color BorderColor = Color.LightYellow, AvailPosColor = Color.Green, SelectedColor = Color.Red;
     }
 
-    internal static class BGM
+    internal static class BUTTON
     {
         public static int SwitchBgmX = WINDOW.WindowWidth - 50, SwitchBgmY = WINDOW.WindowHeight - 100;
 
-        public static int StopBgmX = WINDOW.WindowWidth - 50, StopBgmY = WINDOW.WindowHeight - 50;   
+        public static int StopBgmX = WINDOW.WindowWidth - 50, StopBgmY = WINDOW.WindowHeight - 50;
+
+        public static int UndoMoveX = WINDOW.WindowWidth - 50, UndoMoveY = WINDOW.WindowHeight - 150;
 
         public static int ButtonSize = 30;
     }
@@ -48,15 +50,15 @@ namespace ChineseChessGame.constants
     }
     internal class Turn
     {
-        int[] start;
-        int[] end;
-        Piece piece;
+        public int[] start;
+        public int[] end;
+        public Piece deletedPiece;
 
-        public Turn(int[] start, int[] end, Piece piece = null)
+        public Turn(int[] start, int[] end, Piece deletedPiece = null)
         {
             this.start = start;
             this.end = end;
-            this.piece = piece;
+            this.deletedPiece = deletedPiece;
         }
     }
 }

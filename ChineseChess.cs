@@ -18,15 +18,18 @@ namespace ChineseChessGame
         private KeyboardState kb;
         private MouseState mouse;
 
-        private List<Song> bgm;
+        private List<Song> Button;
         private int songIndex = 0;
 
-        private Texture2D switchBgm;
-        private Rectangle switchBgmRect;
+        private Texture2D switchButton;
+        private Rectangle switchButtonRect;
 
-        private Texture2D toggleBgm;
-        private Rectangle toggleBgmRect;
-        private Boolean isBgmOn = true;
+        private Texture2D toggleButton;
+        private Rectangle toggleButtonRect;
+        private Boolean isButtonOn = true;
+
+        private Texture2D undoMove;
+        private Rectangle undoRect;
 
         private MouseState oldMouse;
         private Boolean hasClicked;
@@ -94,7 +97,7 @@ namespace ChineseChessGame
             turnPos = new Vector2(WINDOW.WindowWidth - 300, 100);
 
             this.initBoard();
-            this.initBgm();
+            this.initButtons();
         }
 
         protected override void Update(GameTime gameTime)
@@ -120,19 +123,23 @@ namespace ChineseChessGame
             }
             oldMouse = mouse;
 
-            if (this.hasClickedRect(mouse, this.switchBgmRect, hasClicked))
+            if (this.hasClickedRect(mouse, this.switchButtonRect, hasClicked))
             {
-                this.switchBgmAction();
+                this.switchButtonAction();
             }
-            else if (this.hasClickedRect(mouse, this.toggleBgmRect, hasClicked))
+            else if (this.hasClickedRect(mouse, this.toggleButtonRect, hasClicked))
             {
-                this.toggleBgmAction();
+                this.toggleButtonAction();
+            }
+            else if(this.hasClickedRect(mouse, this.undoRect, hasClicked))
+            {
+                this.revertToPreviousMove();
             }
 
             if (turn == Team.RED)
             {
                 turnText = "RED TEAM TURN";
-                turnColor = Color.Red;
+                turnColor = Color.DarkRed;
             }
             else
             {
@@ -159,11 +166,14 @@ namespace ChineseChessGame
             spriteBatch.DrawString(textFont, WINDOW.banner, bannerPos, Color.White);
             spriteBatch.DrawString(textFont, turnText, turnPos, turnColor);
 
-            spriteBatch.DrawString(textFont, "Switch Bgm", new Vector2(BGM.SwitchBgmX - 160, BGM.SwitchBgmY - 10), Color.White);
-            spriteBatch.Draw(switchBgm, switchBgmRect, Color.White);
+            spriteBatch.DrawString(textFont, "Switch Bgm", new Vector2(BUTTON.SwitchBgmX - 160, BUTTON.SwitchBgmY - 10), Color.White);
+            spriteBatch.Draw(switchButton, switchButtonRect, Color.White);
 
-            spriteBatch.DrawString(textFont, "Stop Bgm", new Vector2(BGM.StopBgmX - 140, BGM.StopBgmY - 10), Color.White);
-            spriteBatch.Draw(toggleBgm, toggleBgmRect, Color.White);
+            spriteBatch.DrawString(textFont, "Stop Bgm", new Vector2(BUTTON.StopBgmX - 140, BUTTON.StopBgmY - 10), Color.White);
+            spriteBatch.Draw(toggleButton, toggleButtonRect, Color.White);
+
+            spriteBatch.DrawString(textFont, "Undo Move", new Vector2(BUTTON.UndoMoveX - 140, BUTTON.UndoMoveY - 10), Color.White);
+            spriteBatch.Draw(undoMove, undoRect, Color.White);
 
             this.drawBoard();
 
@@ -345,47 +355,62 @@ namespace ChineseChessGame
                 && (mouse.X >= rect.X && mouse.X < rect.X + rect.Width)
                 && (mouse.Y >= rect.Y && mouse.Y < rect.Y + rect.Height);
         }
-        private void initBgm()
+        private void initButtons()
         {
-            bgm = new List<Song>()
+            Button = new List<Song>()
             {
-                Content.Load<Song>("audio/bgm"),
-                Content.Load<Song>("audio/bgm1")
+                Content.Load<Song>("audio/Bgm"),
+                Content.Load<Song>("audio/Bgm1")
             };
 
-            switchBgm = Content.Load<Texture2D>("textures/switch-song");
-            switchBgmRect = new Rectangle(BGM.SwitchBgmX, BGM.SwitchBgmY, BGM.ButtonSize, BGM.ButtonSize);
+            switchButton = Content.Load<Texture2D>("textures/switch-song");
+            switchButtonRect = new Rectangle(BUTTON.SwitchBgmX, BUTTON.SwitchBgmY, BUTTON.ButtonSize, BUTTON.ButtonSize);
 
-            toggleBgm = Content.Load<Texture2D>("textures/stop-song");
-            toggleBgmRect = new Rectangle(BGM.StopBgmX, BGM.StopBgmY, BGM.ButtonSize, BGM.ButtonSize);
+            toggleButton = Content.Load<Texture2D>("textures/stop-song");
+            toggleButtonRect = new Rectangle(BUTTON.StopBgmX, BUTTON.StopBgmY, BUTTON.ButtonSize, BUTTON.ButtonSize);
 
-            MediaPlayer.Play(bgm[songIndex]);
+            undoMove = Content.Load<Texture2D>("textures/undo-move");
+            undoRect = new Rectangle(BUTTON.UndoMoveX, BUTTON.UndoMoveY, BUTTON.ButtonSize, BUTTON.ButtonSize);
+
+            MediaPlayer.Play(Button[songIndex]);
             MediaPlayer.IsRepeating = true;
         }
 
-        private void switchBgmAction()
+        private void switchButtonAction()
         {
             this.songIndex++;
-            if (this.songIndex == this.bgm.Count)
+            if (this.songIndex == this.Button.Count)
             {
                 this.songIndex = 0;
             }
 
-            MediaPlayer.Play(bgm[songIndex]);
+            MediaPlayer.Play(Button[songIndex]);
         }  
 
-        private void toggleBgmAction()
+        private void toggleButtonAction()
         {
-           if (this.isBgmOn)
+           if (this.isButtonOn)
             {
                 MediaPlayer.Stop();
             }
            else
             {
-                MediaPlayer.Play(bgm[songIndex]);
+                MediaPlayer.Play(Button[songIndex]);
             }
 
-            this.isBgmOn = !this.isBgmOn;
+            this.isButtonOn = !this.isButtonOn;
+        }
+
+        private void revertToPreviousMove()
+        {
+            Turn prevTurn = this.turnsLog[turnsLog.Count - 1];
+
+            int[] start = prevTurn.start, end = prevTurn.end;
+
+            board[start[1], start[0]] = board[end[1], end[0]];
+            board[end[1], end[0]] = prevTurn.deletedPiece;
+
+            this.turn = (turn == Team.RED) ? Team.BLACK : Team.RED;
         }
     }
 }
