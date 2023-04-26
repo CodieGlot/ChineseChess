@@ -403,6 +403,8 @@ namespace ChineseChessGame
 
         private void revertToPreviousMove()
         {
+            if (turnsLog.Count == 0) return;
+
             Turn prevTurn = this.turnsLog[turnsLog.Count - 1];
 
             int[] start = prevTurn.start, end = prevTurn.end;
@@ -411,6 +413,7 @@ namespace ChineseChessGame
             board[end[1], end[0]] = prevTurn.deletedPiece;
 
             this.turn = (turn == Team.RED) ? Team.BLACK : Team.RED;
+            this.turnsLog.RemoveAt(turnsLog.Count - 1);
         }
     }
 }
