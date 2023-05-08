@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-  <SourceFile>C:/Users/PC0/source/repos/ChineseChessGame/Content/textures/switch-song.png</SourceFile>
-  <SourceTime>2023-04-25T09:13:10.5176995+07:00</SourceTime>
-  <DestFile>C:/Users/PC0/source/repos/ChineseChessGame/Content/bin/DesktopGL/Content/textures/switch-song.xnb</DestFile>
-  <DestTime>2023-04-26T19:27:30.6461458+07:00</DestTime>
+  <SourceFile>C:/Users/84903/OneDrive/Documents/GitHub/ChineseChess/Content/textures/switch-song.png</SourceFile>
+  <SourceTime>2023-04-26T10:34:25.4971087+07:00</SourceTime>
+  <DestFile>C:/Users/84903/OneDrive/Documents/GitHub/ChineseChess/Content/bin/DesktopGL/Content/textures/switch-song.xnb</DestFile>
+  <DestTime>2023-05-08T17:50:49.1662044+07:00</DestTime>
   <Importer>TextureImporter</Importer>
   <ImporterTime>2022-07-26T18:44:56+07:00</ImporterTime>
   <Processor>TextureProcessor</Processor>

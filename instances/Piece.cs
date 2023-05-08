@@ -18,7 +18,7 @@ namespace ChineseChessGame.instances
         protected Texture2D piece;
         protected Rectangle pieceRect;
 
-        protected List<int[]> validMoves;
+        public List<int[]> validMoves;
 
         protected Texture2D border;
         protected Rectangle borderRect;
@@ -27,7 +27,7 @@ namespace ChineseChessGame.instances
         public Boolean isSelected = false;
 
         protected int X, Y;
-        protected Team team;
+        public Team team;
 
         public Piece(Texture2D piece, Texture2D border, Team team)
         {
@@ -319,29 +319,6 @@ namespace ChineseChessGame.instances
                 clone[n, m] = null;
             }
         }
-        public static  Boolean isEndGame(Piece[,] board)
-        {
-            
-            bool redFlag = false, blackFlag = false;
-            for(int i=0;i<10;i++)
-            {
-                for(int j=0;j<9;j++)
-                {
-                    if (board[i,j] is not null)
-                    {
-                        if (board[i,j].team == Team.RED)
-                        {
-                            if(board[i,j].validMoves is not null) redFlag = true;
-                        }
-                        else
-                        {
-                            if (board[i, j].validMoves is not null) blackFlag = true;
-                        }
-                    }
-                }
-            }
-            if (redFlag == false || blackFlag == false) return true;
-            return false;
-        }
+        
     }
 }

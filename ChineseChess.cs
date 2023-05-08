@@ -159,7 +159,13 @@ namespace ChineseChessGame
                 turnColor = Color.Black;
             }
 
-            if (!Piece.isEndGame(board))
+            
+
+            stateColor = turnColor;
+
+            this.updateBoard();
+
+            if (!isEndGame(board))
             {
                 stateText = "'PLAYING'";
             }
@@ -168,10 +174,6 @@ namespace ChineseChessGame
                 stateText = "'GAME OVER'";
             }
 
-            stateColor = turnColor;
-
-            this.updateBoard();
-            
             base.Update(gameTime);
         }
 
@@ -443,7 +445,30 @@ namespace ChineseChessGame
             this.turnsLog = new List<Turn>();
     }
 
-        
+        private Boolean isEndGame(Piece[,] board)
+        {
+
+            bool redFlag = false, blackFlag = false;
+            for (int i = 0; i < 10; i++)
+            {
+                for (int j = 0; j < 9; j++)
+                {
+                    if (board[i, j] is not null)
+                    {
+                        if (board[i, j].team == Team.RED)
+                        {
+                            if (board[i, j].validMoves.Count != 0) redFlag = true;
+                        }
+                        else
+                        {
+                            if (board[i, j].validMoves.Count != 0) blackFlag = true;
+                        }
+                    }
+                }
+            }
+            if (!redFlag  || !blackFlag) return true;
+            return false;
+        }
 
     }
 }
