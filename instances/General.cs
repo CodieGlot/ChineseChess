@@ -10,10 +10,15 @@ namespace ChineseChessGame.instances
 {
     internal class General : Piece
     {
-
+        public override Boolean isGeneral()
+        {
+            return true;
+        }
         public General(Texture2D piece, Texture2D border, Team team)
            : base(piece, border, team)
         { }
+        public Boolean isChecked()
+        { return true; }
         protected override void assignValidMoves(Piece[,] board)
         {
             this.validMoves = new List<int[]>();
@@ -58,5 +63,7 @@ namespace ChineseChessGame.instances
                 }
             }
         }
+
+        
     }
 }

@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using ChineseChessGame.constants;
 
 using System.Diagnostics;
+using System.Runtime.CompilerServices;
 
 namespace ChineseChessGame.instances
 {
@@ -49,6 +50,7 @@ namespace ChineseChessGame.instances
             this.pieceRect.Y = pieceCoords[1];
 
             this.assignValidMoves(board);
+            this.limitValidMoves(board);
             this.assignBorderCoords(this.X, this.Y);
 
             if (this.team == turn && this.isMouseOnPiece(mouse))
@@ -249,8 +251,97 @@ namespace ChineseChessGame.instances
                 SpriteEffects.None,
                 0);
         }
-        
-        
-        
+        // Quet ban co kiem tra xem co quan nao cua team dich dang check general hay ko
+        // neu co, thu tat ca cac validMove cua Piece hien tai
+        // neu validMove do van lam cho tuong bi checked thi loai bo
+        public virtual Boolean isGeneral()
+        {
+            return false;
+        }
+
+        protected Boolean hasCheckedMate(Piece[,] board, Team team)
+        {
+            // ta se kiem tra tat ca valid Move cua Piece
+            // neu ton tai mot validMove nao do ma doi tuong la general thi return true
+            // khong thi return false
+            if (this is null || this.validMoves is null) return false;
+            for (var i = 0; i < this.validMoves.Count; i++)
+            {
+                int x = this.validMoves[i][0];
+                int y = this.validMoves[i][1];
+                if (board[y, x] is not null && board[y, x].isGeneral() && board[y,x].team!=this.team)
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        protected Piece[,] boardCloning(Piece[,] board)
+        {
+            Piece[,] clone = new Piece[10, 9];
+            for (int i = 0; i < 10; i++)
+                for (int j = 0; j < 9; j++)
+                    if (board[i, j] is not null) clone[i, j] = (Piece) board[i, j].MemberwiseClone();
+            return clone;
+
+        }
+        protected void limitValidMoves(Piece[,] board)
+        {
+            
+            //if (board[Y, X] == null) return;
+            for(int i=0;i< this.validMoves.Count;++i)
+            {
+                bool flag = false;
+                Piece[,] clone = boardCloning(board);
+                int m= this.validMoves[i][0];
+                int n = this.validMoves[i][1];
+                //clone[Y, X].assignValidMoves(clone);
+                clone[n, m] = clone[Y, X].MemberwiseClone() as Piece;
+                clone[Y, X] = null;
+                for(int j=0;j<10;j++)
+                {
+                    
+                    for(int k=0;k<9;k++)
+                    {
+                        if (clone[j, k] is not null) clone[j, k].assignValidMoves(clone);
+                        if (clone[j,k] is not null && clone[j, k].hasCheckedMate(clone, clone[j,k].team) && clone[j,k].team != this.team)
+                        {       
+                            flag = true;
+                            this.validMoves.RemoveAt(i);
+                            --i;
+                            break;
+                        }
+                    }
+                    if (flag) break;
+                }
+                clone[Y, X] = (Piece) clone[n,m].MemberwiseClone();
+                clone[n, m] = null;
+            }
+        }
+        public static  Boolean isEndGame(Piece[,] board)
+        {
+            
+            bool redFlag = false, blackFlag = false;
+            for(int i=0;i<10;i++)
+            {
+                for(int j=0;j<9;j++)
+                {
+                    if (board[i,j] is not null)
+                    {
+                        if (board[i,j].team == Team.RED)
+                        {
+                            if(board[i,j].validMoves is not null) redFlag = true;
+                        }
+                        else
+                        {
+                            if (board[i, j].validMoves is not null) blackFlag = true;
+                        }
+                    }
+                }
+            }
+            if (redFlag == false || blackFlag == false) return true;
+            return false;
+        }
     }
 }

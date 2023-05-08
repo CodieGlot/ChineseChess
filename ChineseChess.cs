@@ -51,6 +51,10 @@ namespace ChineseChessGame
         private Vector2 turnPos;
         private Color turnColor;
 
+        private string stateText;
+        private Vector2 statePos;
+        private Color stateColor;
+
         private Piece[,] board;
 
         private Team turn = Team.RED;
@@ -98,7 +102,8 @@ namespace ChineseChessGame
             textFont = Content.Load<SpriteFont>("fonts/textFont");
             bannerPos = new Vector2(10, 10);
             turnPos = new Vector2(WINDOW.WindowWidth - 300, 100);
-
+            statePos = new Vector2(WINDOW.WindowWidth - 250, 150);
+            
             this.initBoard();
             this.initButtons();
         }
@@ -154,8 +159,19 @@ namespace ChineseChessGame
                 turnColor = Color.Black;
             }
 
-            this.updateBoard();
+            if (!Piece.isEndGame(board))
+            {
+                stateText = "'PLAYING'";
+            }
+            else
+            {
+                stateText = "'GAME OVER'";
+            }
 
+            stateColor = turnColor;
+
+            this.updateBoard();
+            
             base.Update(gameTime);
         }
 
@@ -184,7 +200,7 @@ namespace ChineseChessGame
 
             spriteBatch.DrawString(textFont, "Reset Game", new Vector2(BUTTON.ResetGameX - 160, BUTTON.ResetGameY - 10), Color.White);
             spriteBatch.Draw(resetGame, resetGameRect, Color.White);
-
+            spriteBatch.DrawString(textFont, stateText, statePos, stateColor); 
             this.drawBoard();
 
             //End Drawing
@@ -426,5 +442,8 @@ namespace ChineseChessGame
             this.turn = Team.RED;
             this.turnsLog = new List<Turn>();
     }
+
+        
+
     }
 }

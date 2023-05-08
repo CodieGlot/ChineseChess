@@ -26,9 +26,10 @@ namespace ChineseChessGame.instances
                 }
                 else
                 {
-                    if (board[Y,i] is not null && this.isValidMove(board, i, Y))
+                    if (board[Y,i] is not null )
                     {
-                        this.validMoves.Add(new int[] { i, Y });
+                        if(this.isValidMove(board, i, Y))
+                            this.validMoves.Add(new int[] { i, Y });
                         break;
                     }
                 }
@@ -43,9 +44,10 @@ namespace ChineseChessGame.instances
                 }
                 else
                 {
-                    if (board[Y, i] is not null && this.isValidMove(board, i, Y))
+                    if (board[Y, i] is not null )
                     {
-                        this.validMoves.Add(new int[] { i, Y });
+                        if(this.isValidMove(board, i, Y))
+                            this.validMoves.Add(new int[] { i, Y });
                         break;
                     }
                 }
@@ -61,9 +63,10 @@ namespace ChineseChessGame.instances
                 }
                 else
                 {
-                    if (board[i, X] is not null && this.isValidMove(board, X, i))
+                    if (board[i, X] is not null )
                     {
-                        this.validMoves.Add(new int[] { X, i });
+                        if( this.isValidMove(board, X, i))
+                            this.validMoves.Add(new int[] { X, i });
                         break;
                     }
                 }
@@ -79,9 +82,10 @@ namespace ChineseChessGame.instances
                 }
                 else
                 {
-                    if (board[i, X] is not null && this.isValidMove(board, X, i))
+                    if (board[i, X] is not null )
                     {
-                        this.validMoves.Add(new int[] { X, i });
+                        if( this.isValidMove(board, X, i))
+                            this.validMoves.Add(new int[] { X, i });
                         break;
                     }
                 }
