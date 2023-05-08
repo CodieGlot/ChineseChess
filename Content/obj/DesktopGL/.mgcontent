@@ -4,6 +4,7 @@
   <Platform>DesktopGL</Platform>
   <Config />
   <SourceFiles>
+    <File>C:/Users/PC0/source/repos/ChineseChessGame/Content/textures/reset-button.png</File>
     <File>C:/Users/PC0/source/repos/ChineseChessGame/Content/textures/undo-move.jpg</File>
     <File>C:/Users/PC0/source/repos/ChineseChessGame/Content/audio/bgm.mp3</File>
     <File>C:/Users/PC0/source/repos/ChineseChessGame/Content/audio/bgm1.mp3</File>

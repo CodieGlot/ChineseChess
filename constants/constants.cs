@@ -41,6 +41,8 @@ namespace ChineseChessGame.constants
 
         public static int UndoMoveX = WINDOW.WindowWidth - 50, UndoMoveY = WINDOW.WindowHeight - 150;
 
+        public static int ResetGameX = WINDOW.WindowWidth - 50, ResetGameY = 330;
+
         public static int ButtonSize = 30;
     }
 

@@ -21,15 +21,18 @@ namespace ChineseChessGame
         private List<Song> Button;
         private int songIndex = 0;
 
-        private Texture2D switchButton;
-        private Rectangle switchButtonRect;
-
         private Texture2D toggleButton;
         private Rectangle toggleButtonRect;
         private Boolean isButtonOn = true;
 
         private Texture2D undoMove;
         private Rectangle undoRect;
+
+        private Texture2D resetGame;
+        private Rectangle resetGameRect;
+
+        private Texture2D switchButton;
+        private Rectangle switchButtonRect;
 
         private MouseState oldMouse;
         private Boolean hasClicked;
@@ -131,9 +134,13 @@ namespace ChineseChessGame
             {
                 this.toggleButtonAction();
             }
-            else if(this.hasClickedRect(mouse, this.undoRect, hasClicked))
+            else if (this.hasClickedRect(mouse, this.undoRect, hasClicked))
             {
                 this.revertToPreviousMove();
+            }
+            else if (this.hasClickedRect(mouse, this.resetGameRect, hasClicked))
+            {
+                this.resetGameAction();
             }
 
             if (turn == Team.RED)
@@ -174,6 +181,9 @@ namespace ChineseChessGame
 
             spriteBatch.DrawString(textFont, "Undo Move", new Vector2(BUTTON.UndoMoveX - 140, BUTTON.UndoMoveY - 10), Color.White);
             spriteBatch.Draw(undoMove, undoRect, Color.White);
+
+            spriteBatch.DrawString(textFont, "Reset Game", new Vector2(BUTTON.ResetGameX - 160, BUTTON.ResetGameY - 10), Color.White);
+            spriteBatch.Draw(resetGame, resetGameRect, Color.White);
 
             this.drawBoard();
 
@@ -266,16 +276,6 @@ namespace ChineseChessGame
                     if (board[y, x] is not null)
                     {
                         board[y, x].Draw(spriteBatch);
-                    }
-                }
-            }
-
-            for (int y = 0; y != 10; y++)
-            {
-                for (int x = 0; x != 9; x++)
-                {
-                    if (board[y, x] is not null)
-                    {
                         board[y, x].DrawPieceBorder(spriteBatch);
                     }
                 }
@@ -372,6 +372,9 @@ namespace ChineseChessGame
             undoMove = Content.Load<Texture2D>("textures/undo-move");
             undoRect = new Rectangle(BUTTON.UndoMoveX, BUTTON.UndoMoveY, BUTTON.ButtonSize, BUTTON.ButtonSize);
 
+            resetGame = Content.Load<Texture2D>("textures/reset-button");
+            resetGameRect = new Rectangle(BUTTON.ResetGameX, BUTTON.ResetGameY, BUTTON.ButtonSize, BUTTON.ButtonSize);
+
             MediaPlayer.Play(Button[songIndex]);
             MediaPlayer.IsRepeating = true;
         }
@@ -415,5 +418,13 @@ namespace ChineseChessGame
             this.turn = (turn == Team.RED) ? Team.BLACK : Team.RED;
             this.turnsLog.RemoveAt(turnsLog.Count - 1);
         }
+
+        private void resetGameAction()
+        {
+            this.initBoard();
+
+            this.turn = Team.RED;
+            this.turnsLog = new List<Turn>();
+    }
     }
 }
