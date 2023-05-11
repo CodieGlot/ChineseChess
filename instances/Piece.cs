@@ -10,6 +10,8 @@ using ChineseChessGame.constants;
 
 using System.Diagnostics;
 using System.Runtime.CompilerServices;
+using Microsoft.Xna.Framework.Audio;
+using Microsoft.Xna.Framework.Media;
 
 namespace ChineseChessGame.instances
 {
@@ -48,6 +50,7 @@ namespace ChineseChessGame.instances
             int[] pieceCoords = this.getPieceCoords(x, y);
             this.pieceRect.X = pieceCoords[0];
             this.pieceRect.Y = pieceCoords[1];
+            
 
             this.assignValidMoves(board);
             this.limitValidMoves(board);
@@ -68,7 +71,7 @@ namespace ChineseChessGame.instances
 
                     this.isSelected = !this.isSelected;
                 }
-                
+
                 if (!this.isSelected)
                 {
                     this.hasHighlightBorder = true;

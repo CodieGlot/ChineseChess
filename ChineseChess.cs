@@ -7,7 +7,8 @@ using System;
 using System.Runtime.CompilerServices;
 using ChineseChessGame.constants;
 using System.Collections.Generic;
-
+using System.Linq;
+using Microsoft.Xna.Framework.Audio;
 namespace ChineseChessGame
 {
     public class ChineseChess : Game
@@ -60,6 +61,10 @@ namespace ChineseChessGame
         private Team turn = Team.RED;
         private List<Turn> turnsLog = new List<Turn>();
 
+        private SoundEffect soundplay;
+        private SoundEffect soundplay1;
+        private SoundEffect soundplay2;
+
         public ChineseChess()
         {
             graphics = new GraphicsDeviceManager(this);
@@ -98,6 +103,10 @@ namespace ChineseChessGame
 
             border = new Texture2D(graphics.GraphicsDevice, 1, 1, false, SurfaceFormat.Color);
             border.SetData<Color>(new[] { Color.White });
+
+            soundplay = Content.Load<SoundEffect>("audio/move");
+            soundplay1 = Content.Load<SoundEffect>("audio/capture");
+            soundplay2 = Content.Load<SoundEffect>("audio/gong-game-start-end");
 
             textFont = Content.Load<SpriteFont>("fonts/textFont");
             bannerPos = new Vector2(10, 10);
@@ -159,11 +168,9 @@ namespace ChineseChessGame
                 turnColor = Color.Black;
             }
 
-            
-
             stateColor = turnColor;
-
             this.updateBoard();
+
 
             if (!isEndGame(board))
             {
@@ -172,6 +179,8 @@ namespace ChineseChessGame
             else
             {
                 stateText = "'GAME OVER'";
+                soundplay2.Play();
+                this.resetGameAction();
             }
 
             base.Update(gameTime);
@@ -277,7 +286,11 @@ namespace ChineseChessGame
                             turn = (turn == Team.RED) ? Team.BLACK : Team.RED;
 
                             board[y, x].isSelected = false;
-
+                            if (board[coords[1], coords[0]] is not null)
+                            {
+                                soundplay1.Play();
+                            }
+                            else soundplay.Play();
                             board[coords[1], coords[0]] = board[y, x];
                             board[y, x] = null;
                         }
@@ -466,7 +479,7 @@ namespace ChineseChessGame
                     }
                 }
             }
-            if (!redFlag  || !blackFlag) return true;
+            if (!redFlag || !blackFlag) return true;
             return false;
         }
 

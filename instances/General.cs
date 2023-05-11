@@ -17,7 +17,7 @@ namespace ChineseChessGame.instances
         public General(Texture2D piece, Texture2D border, Team team)
            : base(piece, border, team)
         { }
-        protected override Boolean isChecked(Piece[,] board)
+        public Boolean isChecked(Piece[,] board)
         {
             return true;
         }

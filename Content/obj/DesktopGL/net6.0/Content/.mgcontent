@@ -6,6 +6,9 @@
   <SourceFiles>
     <File>C:/Users/MINH TOAN/source/repos/ChineseChessC#/Content/audio/bgm.mp3</File>
     <File>C:/Users/MINH TOAN/source/repos/ChineseChessC#/Content/audio/bgm1.mp3</File>
+    <File>C:/Users/MINH TOAN/source/repos/ChineseChessC#/Content/audio/capture.mp3</File>
+    <File>C:/Users/MINH TOAN/source/repos/ChineseChessC#/Content/audio/gong-game-start-end.mp3</File>
+    <File>C:/Users/MINH TOAN/source/repos/ChineseChessC#/Content/audio/move.mp3</File>
     <File>C:/Users/MINH TOAN/source/repos/ChineseChessC#/Content/fonts/textFont.spritefont</File>
     <File>C:/Users/MINH TOAN/source/repos/ChineseChessC#/Content/pieces/advisor-black.png</File>
     <File>C:/Users/MINH TOAN/source/repos/ChineseChessC#/Content/pieces/advisor-red.png</File>
@@ -29,6 +32,9 @@
     <File>C:/Users/MINH TOAN/source/repos/ChineseChessC#/Content/textures/undo-move.jpg</File>
   </SourceFiles>
   <DestFiles>
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />
