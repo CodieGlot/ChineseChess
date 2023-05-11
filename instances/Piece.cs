@@ -261,7 +261,10 @@ namespace ChineseChessGame.instances
         {
             return false;
         }
-
+        public virtual Boolean SpecialChecked(Piece[,] board)
+        {
+            return false;
+        }
         protected Boolean hasCheckedMate(Piece[,] board, Team team)
         {
             // ta se kiem tra tat ca valid Move cua Piece
@@ -276,6 +279,7 @@ namespace ChineseChessGame.instances
                 {
                     return true;
                 }
+
             }
             return false;
         }
@@ -308,6 +312,13 @@ namespace ChineseChessGame.instances
                     for(int k=0;k<9;k++)
                     {
                         if (clone[j, k] is not null) clone[j, k].assignValidMoves(clone);
+                        if (clone[j,k] is not null && clone[j, k].isGeneral() && clone[j, k].SpecialChecked(clone))
+                        {
+                            flag = true;
+                            this.validMoves.RemoveAt(i);
+                            --i;
+                            break;
+                        }
                         if (clone[j,k] is not null && clone[j, k].hasCheckedMate(clone, clone[j,k].team) && clone[j,k].team != this.team)
                         {       
                             flag = true;
