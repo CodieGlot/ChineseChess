@@ -17,8 +17,10 @@ namespace ChineseChessGame.instances
         public General(Texture2D piece, Texture2D border, Team team)
            : base(piece, border, team)
         { }
-        public Boolean isChecked()
-        { return true; }
+        protected override Boolean isChecked(Piece[,] board)
+        {
+            return true;
+        }
         protected override void assignValidMoves(Piece[,] board)
         {
             this.validMoves = new List<int[]>();
