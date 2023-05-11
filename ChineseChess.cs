@@ -61,9 +61,9 @@ namespace ChineseChessGame
         private Team turn = Team.RED;
         private List<Turn> turnsLog = new List<Turn>();
 
-        private SoundEffect soundplay;
-        private SoundEffect soundplay1;
-        private SoundEffect soundplay2;
+        private SoundEffect PieceMoveSound;
+        private SoundEffect PieceCaptureSound;
+        private SoundEffect EndGameSound;
 
         public ChineseChess()
         {
@@ -104,9 +104,9 @@ namespace ChineseChessGame
             border = new Texture2D(graphics.GraphicsDevice, 1, 1, false, SurfaceFormat.Color);
             border.SetData<Color>(new[] { Color.White });
 
-            soundplay = Content.Load<SoundEffect>("audio/move");
-            soundplay1 = Content.Load<SoundEffect>("audio/capture");
-            soundplay2 = Content.Load<SoundEffect>("audio/gong-game-start-end");
+            PieceMoveSound= Content.Load<SoundEffect>("audio/move");
+            PieceCaptureSound = Content.Load<SoundEffect>("audio/capture");
+            EndGameSound = Content.Load<SoundEffect>("audio/gong-game-start-end");
 
             textFont = Content.Load<SpriteFont>("fonts/textFont");
             bannerPos = new Vector2(10, 10);
@@ -179,7 +179,7 @@ namespace ChineseChessGame
             else
             {
                 stateText = "'GAME OVER'";
-                soundplay2.Play();
+                EndGameSound.Play();
                 this.resetGameAction();
             }
 
@@ -288,9 +288,9 @@ namespace ChineseChessGame
                             board[y, x].isSelected = false;
                             if (board[coords[1], coords[0]] is not null)
                             {
-                                soundplay1.Play();
+                                PieceCaptureSound.Play();
                             }
-                            else soundplay.Play();
+                            else PieceMoveSound.Play();
                             board[coords[1], coords[0]] = board[y, x];
                             board[y, x] = null;
                         }
