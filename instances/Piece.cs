@@ -251,9 +251,6 @@ namespace ChineseChessGame.instances
                 SpriteEffects.None,
                 0);
         }
-        // Quet ban co kiem tra xem co quan nao cua team dich dang check general hay ko
-        // neu co, thu tat ca cac validMove cua Piece hien tai
-        // neu validMove do van lam cho tuong bi checked thi loai bo
         public virtual Boolean isGeneral()
         {
             return false;
@@ -261,9 +258,6 @@ namespace ChineseChessGame.instances
 
         protected Boolean hasCheckedMate(Piece[,] board, Team team)
         {
-            // ta se kiem tra tat ca valid Move cua Piece
-            // neu ton tai mot validMove nao do ma doi tuong la general thi return true
-            // khong thi return false
             if (this is null || this.validMoves is null) return false;
             for (var i = 0; i < this.validMoves.Count; i++)
             {
@@ -289,14 +283,13 @@ namespace ChineseChessGame.instances
         protected void limitValidMoves(Piece[,] board)
         {
             
-            //if (board[Y, X] == null) return;
             for(int i=0;i< this.validMoves.Count;++i)
             {
                 bool flag = false;
                 Piece[,] clone = boardCloning(board);
-                int m= this.validMoves[i][0];
+                int m = this.validMoves[i][0];
                 int n = this.validMoves[i][1];
-                //clone[Y, X].assignValidMoves(clone);
+
                 clone[n, m] = clone[Y, X].MemberwiseClone() as Piece;
                 clone[Y, X] = null;
                 for(int j=0;j<10;j++)

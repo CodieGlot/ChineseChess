@@ -447,7 +447,6 @@ namespace ChineseChessGame
 
         private Boolean isEndGame(Piece[,] board)
         {
-
             bool redFlag = false, blackFlag = false;
             for (int i = 0; i < 10; i++)
             {
