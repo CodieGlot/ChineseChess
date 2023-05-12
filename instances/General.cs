@@ -21,10 +21,47 @@ namespace ChineseChessGame.instances
         {
             return true;
         }
+        public override Boolean SpecialChecked(Piece[,] board)
+        {
+            for(int j = 0; j != 10; j++)
+            {
+                for(int i = 0; i != 9; i++)
+                {
+                    if (board[j, i] is not null && board[j, i].team != this.team && board[j, i].isGeneral())
+                    {
+                        if (i == this.X)
+                        {
+                            if (this.team == Team.BLACK)
+                            {
+                                for (int k = this.Y + 1; k != j; k++)
+                                {
+                                    if (board[k, i] is not null)
+                                    return false;
+                                }
+                                return true;
+                            }
+                            else
+                            {
+                                for (int k = j + 1; k != this.Y; k++)
+                                {
+                                    if (board[k, i] is not null)
+                                    return false;
+                                }
+                                return true;
+                            }
+                        }
+                        else
+                        {
+                            return false;
+                        }
+                    }
+                }
+            }
+            return false;
+        }
         protected override void assignValidMoves(Piece[,] board)
         {
             this.validMoves = new List<int[]>();
-
             if (this.team == Team.BLACK) {
                 int XValidMin = 3, XValidMax = 5, YValidMin = 0, YValidMax = 2;
                 if (YValidMin <= Y - 1 && Y - 1 <= YValidMax && this.isValidMove(board, X, Y - 1))
