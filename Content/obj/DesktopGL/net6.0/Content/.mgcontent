@@ -4,32 +4,32 @@
   <Platform>DesktopGL</Platform>
   <Config />
   <SourceFiles>
-    <File>C:/Users/MINH TOAN/source/repos/ChineseChessC#/Content/audio/bgm.mp3</File>
-    <File>C:/Users/MINH TOAN/source/repos/ChineseChessC#/Content/audio/bgm1.mp3</File>
-    <File>C:/Users/MINH TOAN/source/repos/ChineseChessC#/Content/audio/capture.mp3</File>
-    <File>C:/Users/MINH TOAN/source/repos/ChineseChessC#/Content/audio/gong-game-start-end.mp3</File>
-    <File>C:/Users/MINH TOAN/source/repos/ChineseChessC#/Content/audio/move.mp3</File>
-    <File>C:/Users/MINH TOAN/source/repos/ChineseChessC#/Content/fonts/textFont.spritefont</File>
-    <File>C:/Users/MINH TOAN/source/repos/ChineseChessC#/Content/pieces/advisor-black.png</File>
-    <File>C:/Users/MINH TOAN/source/repos/ChineseChessC#/Content/pieces/advisor-red.png</File>
-    <File>C:/Users/MINH TOAN/source/repos/ChineseChessC#/Content/pieces/cannon-black.png</File>
-    <File>C:/Users/MINH TOAN/source/repos/ChineseChessC#/Content/pieces/cannon-red.png</File>
-    <File>C:/Users/MINH TOAN/source/repos/ChineseChessC#/Content/pieces/chariot-black.png</File>
-    <File>C:/Users/MINH TOAN/source/repos/ChineseChessC#/Content/pieces/chariot-red.png</File>
-    <File>C:/Users/MINH TOAN/source/repos/ChineseChessC#/Content/pieces/elephant-black.png</File>
-    <File>C:/Users/MINH TOAN/source/repos/ChineseChessC#/Content/pieces/elephant-red.png</File>
-    <File>C:/Users/MINH TOAN/source/repos/ChineseChessC#/Content/pieces/general-black.png</File>
-    <File>C:/Users/MINH TOAN/source/repos/ChineseChessC#/Content/pieces/general-red.png</File>
-    <File>C:/Users/MINH TOAN/source/repos/ChineseChessC#/Content/pieces/horse-black.png</File>
-    <File>C:/Users/MINH TOAN/source/repos/ChineseChessC#/Content/pieces/horse-red.png</File>
-    <File>C:/Users/MINH TOAN/source/repos/ChineseChessC#/Content/pieces/soldier-black.png</File>
-    <File>C:/Users/MINH TOAN/source/repos/ChineseChessC#/Content/pieces/soldier-red.png</File>
-    <File>C:/Users/MINH TOAN/source/repos/ChineseChessC#/Content/textures/background.jpg</File>
-    <File>C:/Users/MINH TOAN/source/repos/ChineseChessC#/Content/textures/border.png</File>
-    <File>C:/Users/MINH TOAN/source/repos/ChineseChessC#/Content/textures/reset-button.png</File>
-    <File>C:/Users/MINH TOAN/source/repos/ChineseChessC#/Content/textures/stop-song.png</File>
-    <File>C:/Users/MINH TOAN/source/repos/ChineseChessC#/Content/textures/switch-song.png</File>
-    <File>C:/Users/MINH TOAN/source/repos/ChineseChessC#/Content/textures/undo-move.jpg</File>
+    <File>C:/Users/PC0/source/repos/ChineseChessGame/Content/audio/bgm.mp3</File>
+    <File>C:/Users/PC0/source/repos/ChineseChessGame/Content/audio/bgm1.mp3</File>
+    <File>C:/Users/PC0/source/repos/ChineseChessGame/Content/audio/capture.mp3</File>
+    <File>C:/Users/PC0/source/repos/ChineseChessGame/Content/audio/gong-game-start-end.mp3</File>
+    <File>C:/Users/PC0/source/repos/ChineseChessGame/Content/audio/move.mp3</File>
+    <File>C:/Users/PC0/source/repos/ChineseChessGame/Content/fonts/textFont.spritefont</File>
+    <File>C:/Users/PC0/source/repos/ChineseChessGame/Content/pieces/advisor-black.png</File>
+    <File>C:/Users/PC0/source/repos/ChineseChessGame/Content/pieces/advisor-red.png</File>
+    <File>C:/Users/PC0/source/repos/ChineseChessGame/Content/pieces/cannon-black.png</File>
+    <File>C:/Users/PC0/source/repos/ChineseChessGame/Content/pieces/cannon-red.png</File>
+    <File>C:/Users/PC0/source/repos/ChineseChessGame/Content/pieces/chariot-black.png</File>
+    <File>C:/Users/PC0/source/repos/ChineseChessGame/Content/pieces/chariot-red.png</File>
+    <File>C:/Users/PC0/source/repos/ChineseChessGame/Content/pieces/elephant-black.png</File>
+    <File>C:/Users/PC0/source/repos/ChineseChessGame/Content/pieces/elephant-red.png</File>
+    <File>C:/Users/PC0/source/repos/ChineseChessGame/Content/pieces/general-black.png</File>
+    <File>C:/Users/PC0/source/repos/ChineseChessGame/Content/pieces/general-red.png</File>
+    <File>C:/Users/PC0/source/repos/ChineseChessGame/Content/pieces/horse-black.png</File>
+    <File>C:/Users/PC0/source/repos/ChineseChessGame/Content/pieces/horse-red.png</File>
+    <File>C:/Users/PC0/source/repos/ChineseChessGame/Content/pieces/soldier-black.png</File>
+    <File>C:/Users/PC0/source/repos/ChineseChessGame/Content/pieces/soldier-red.png</File>
+    <File>C:/Users/PC0/source/repos/ChineseChessGame/Content/textures/background.jpg</File>
+    <File>C:/Users/PC0/source/repos/ChineseChessGame/Content/textures/border.png</File>
+    <File>C:/Users/PC0/source/repos/ChineseChessGame/Content/textures/reset-button.png</File>
+    <File>C:/Users/PC0/source/repos/ChineseChessGame/Content/textures/stop-song.png</File>
+    <File>C:/Users/PC0/source/repos/ChineseChessGame/Content/textures/switch-song.png</File>
+    <File>C:/Users/PC0/source/repos/ChineseChessGame/Content/textures/undo-move.jpg</File>
   </SourceFiles>
   <DestFiles>
     <File xsi:nil="true" />
